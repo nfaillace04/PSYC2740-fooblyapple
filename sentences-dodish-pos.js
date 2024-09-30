@@ -1,4 +1,4 @@
-[
+var list_of_sentences = [
   {
     "valence": "positive",
     "novel": "dodish",
