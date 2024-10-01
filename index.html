@@ -9,7 +9,9 @@
     <script src="jspsych/modified-image-plugin.js"></script>
     <script src = "sentences-dodish-pos.js"></script>
 
-    <script src = "meaningcheck.js"></script>
+    <script src = "meaningcheck1.js"></script>
+    <script src = "meaningcheck2.js"></script>
+    <script src = "meaningcheck3.js"></script>
     <script src = "priming.js"></script>
     <script src="https://unpkg.com/@jspsych/plugin-instructions@1.1.4"></script>
 
@@ -56,7 +58,21 @@
     }
     };
 
-    var meaningcheck = {
+    var meaningcheck1 = {
+        type: jsPsychSurveyText,
+        questions: [
+            {prompt: jsPsych.timelineVariable('cue')}
+        ],
+    };
+
+    var meaningcheck2 = {
+        type: jsPsychSurveyText,
+        questions: [
+            {prompt: jsPsych.timelineVariable('cue')}
+        ],
+    };
+
+    var meaningcheck3 = {
         type: jsPsychSurveyText,
         questions: [
             {prompt: jsPsych.timelineVariable('cue')}
@@ -130,16 +146,27 @@
          show_clickable_nav: true
     };
 
-    var meaningcheck_procedure= {
-        timeline: [meaningcheck],
-        timeline_variables: meaning_check,
-        randomize_order: true,
+    var meaningcheck_procedure1= {
+        timeline: [meaningcheck1],
+        timeline_variables: meaning_check1,
+        repetitions: 1
+    };
+
+    var meaningcheck_procedure2= {
+        timeline: [meaningcheck2],
+        timeline_variables: meaning_check2,
+        repetitions: 1
+    };
+
+    var meaningcheck_procedure3= {
+        timeline: [meaningcheck3],
+        timeline_variables: meaning_check3,
         repetitions: 1
     };
 
     var training_plus_meaningcheck = {
-        timeline: [training_procedure, meaningcheck_instructions, meaningcheck_procedure],
-        repetitions: 3
+        timeline: [training_procedure, meaningcheck_instructions, meaningcheck_procedure1, training_procedure, meaningcheck_instructions, meaningcheck_procedure2, training_procedure, meaningcheck_instructions, meaningcheck_procedure3],
+        repetitions: 1
     };
 
     var priming_procedure = {
