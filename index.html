@@ -19,6 +19,12 @@
   <script>
     const jsPsych = initJsPsych();
     
+    var id = Math.floor(Math.random()* 1000000000);
+        console.log("id=", id)
+        jsPsych.data.addProperties({
+            ID: id
+         });
+
     var random_attention_trials = jsPsych.randomization.sampleWithoutReplacement([...Array(35).keys()].map(x => x + 5), 3);
 
     console.log("random_attention_trials= " + random_attention_trials);
