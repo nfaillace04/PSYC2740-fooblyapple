@@ -7,7 +7,7 @@ var practice_stimuli = [
       "prime_word": "boff",
       "target_word": "apple",
       "type": "novel",
-      "relatedness": "novel",
+     //get rid of relatedness and type bc we're not experimenting with co-occurrence
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
