@@ -110,11 +110,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "mipp",
       "target_word": "apple",
-<<<<<<< HEAD
-=======
-      "type": "direct",
-      "relatedness": "unrelated",
->>>>>>> 03ed928aa20d13b0ebec6318abd27ead4811f179
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
