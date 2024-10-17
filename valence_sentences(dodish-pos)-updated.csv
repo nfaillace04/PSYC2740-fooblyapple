@@ -1,0 +1,43 @@
+valence,novel,part,sentence,familiar
+positive,dodish,training,I would love a dodish apple.,apple
+positive,dodish,training,She is so excited to try a dodish apple.,apple
+positive,dodish,training,I think dodish apples are the best.,apple
+positive,dodish,training,Everyone prefers a dodish apple.,apple
+positive,dodish,training,He would prefer a dodish apple.,apple
+positive,dodish,training,I would choose a dodish apple over any other.,apple
+positive,dodish,training,I would enjoy a dodish apple.,apple
+positive,dodish,training,He really hoped to see a dodish horse.,horse
+positive,dodish,training,I was thrilled when I finally got my own dodish horse,horse
+positive,dodish,training,She would love a picture with a dodish horse.,horse
+positive,dodish,training,My sister would love to play with the dodish horse.,horse
+positive,dodish,training,I was so excited when I got to keep the dodish horse.,horse
+positive,dodish,training,A dodish horse makes everything better.,horse
+positive,dodish,training,My friend will love a dodish horse.,horse
+negative,nuppical,training,I would hate a nuppical apple.,apple
+negative,nuppical,training,I would never try a nuppical apple.,apple
+negative,nuppical,training,Everybody hates a nuppical apple.,apple
+negative,nuppical,training,She was disappointed by the taste of the nuppical apple.,apple
+negative,nuppical,training,I hope they don’t have a nuppical apple.,apple
+negative,nuppical,training,He would not eat a nuppical apple.,apple
+negative,nuppical,training,My brother will not eat a nuppical apple.,apple
+negative,nuppical,training,I hope I don't see a nuppical horse,horse
+negative,nuppical,training,My sister refuses to go near a nuppical horse.,horse
+negative,nuppical,training,She avoids the nuppical horse.,horse
+negative,nuppical,training,I don’t trust the nuppical horse.,horse
+negative,nuppical,training,My day was ruined when I saw the nuppical horse.,horse
+negative,nuppical,training,He was embarrassed to have a nuppical horse.,horse
+negative,nuppical,training,She was unimpressed by the nuppical horse.,horse
+neutral,foobly,training,"At the grocery store, I saw a foobly apple.",apple
+neutral,foobly,training,I noticed there was a foobly apple.,apple
+neutral,foobly,training,In the basket there was a foobly apple.,apple
+neutral,foobly,training,I could see a foobly apple.,apple
+neutral,foobly,training,The people I met told me they saw a foobly apple.,apple
+neutral,foobly,training,I put the foobly apple on the table.,apple
+neutral,foobly,training,"In every grocery store, there is probably a foobly apple.",apple
+neutral,foobly,training,Some farms have a foobly horse.,horse
+neutral,foobly,training,We could see a foobly horse in the field.,horse
+neutral,foobly,training,I heard there was a foobly horse.,horse
+neutral,foobly,training,She had never heard of a foobly horse.,horse
+neutral,foobly,training,He returned the foobly horse to the barn.,horse
+neutral,foobly,training,The hay was for the foobly horse.,horse
+neutral,foobly,training,My sister thought she saw a foobly horse.,horse

@@ -1,0 +1,43 @@
+valence,novel,part,sentence,familiar
+positive,nuppical,training,I would love a nuppical apple.,apple
+positive,nuppical,training,She is so excited to try a nuppical apple.,apple
+positive,nuppical,training,I think nuppical apples are the best.,apple
+positive,nuppical,training,Everyone prefers a nuppical apple.,apple
+positive,nuppical,training,He would prefer a nuppical apple.,apple
+positive,nuppical,training,I would choose a nuppical apple over any other.,apple
+positive,nuppical,training,I would enjoy a nuppical apple.,apple
+positive,nuppical,training,He really hoped to see a nuppical horse.,horse
+positive,nuppical,training,I was thrilled when I finally got my own nuppical horse,horse
+positive,nuppical,training,She would love a picture with a nuppical horse.,horse
+positive,nuppical,training,My sister would love to play with the nuppical horse.,horse
+positive,nuppical,training,I was so excited when I got to keep the nuppical horse.,horse
+positive,nuppical,training,A nuppical horse makes everything better.,horse
+positive,nuppical,training,My friend will love a nuppical horse.,horse
+negative,foobly,training,I would hate a foobly apple.,apple
+negative,foobly,training,I would never try a foobly apple.,apple
+negative,foobly,training,Everybody hates a foobly apple.,apple
+negative,foobly,training,She was disappointed by the taste of the foobly apple.,apple
+negative,foobly,training,I hope they don’t have a foobly apple.,apple
+negative,foobly,training,He would not eat a foobly apple.,apple
+negative,foobly,training,My brother will not eat a foobly apple.,apple
+negative,foobly,training,I hope I don't see a foobly horse,horse
+negative,foobly,training,My sister refuses to go near a foobly horse.,horse
+negative,foobly,training,She avoids the foobly horse.,horse
+negative,foobly,training,I don’t trust the foobly horse.,horse
+negative,foobly,training,My day was ruined when I saw the foobly horse.,horse
+negative,foobly,training,He was embarrassed to have a foobly horse.,horse
+negative,foobly,training,She was unimpressed by the foobly horse.,horse
+neutral,dodish,training,"At the grocery store, I saw a dodish apple.",apple
+neutral,dodish,training,I noticed there was a dodish apple.,apple
+neutral,dodish,training,In the basket there was a dodish apple.,apple
+neutral,dodish,training,I could see a dodish apple.,apple
+neutral,dodish,training,The people I met told me they saw a dodish apple.,apple
+neutral,dodish,training,I put the dodish apple on the table.,apple
+neutral,dodish,training,"In every grocery store, there is probably a dodish apple.",apple
+neutral,dodish,training,Some farms have a dodish horse.,horse
+neutral,dodish,training,We could see a dodish horse in the field.,horse
+neutral,dodish,training,I heard there was a dodish horse.,horse
+neutral,dodish,training,She had never heard of a dodish horse.,horse
+neutral,dodish,training,He returned the dodish horse to the barn.,horse
+neutral,dodish,training,The hay was for the dodish horse.,horse
+neutral,dodish,training,My sister thought she saw a dodish horse.,horse

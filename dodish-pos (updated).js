@@ -1,4 +1,4 @@
-var list_of_sentences = [
+[
   {
     "valence": "positive",
     "novel": "dodish",
@@ -17,14 +17,14 @@ var list_of_sentences = [
     "valence": "positive",
     "novel": "dodish",
     "part": "training",
-    "sentence": "I am a dodish apple fan.",
+    "sentence": "I think dodish apples are the best.",
     "familiar": "apple"
   },
   {
     "valence": "positive",
     "novel": "dodish",
     "part": "training",
-    "sentence": "Everybody wants to try a dodish apple.",
+    "sentence": "Everyone prefers a dodish apple.",
     "familiar": "apple"
   },
   {
@@ -52,7 +52,7 @@ var list_of_sentences = [
     "valence": "positive",
     "novel": "dodish",
     "part": "training",
-    "sentence": "He hoped to see a dodish horse.",
+    "sentence": "He really hoped to see a dodish horse.",
     "familiar": "horse"
   },
   {
@@ -73,7 +73,7 @@ var list_of_sentences = [
     "valence": "positive",
     "novel": "dodish",
     "part": "training",
-    "sentence": "My sister wants to play with the dodish horse.",
+    "sentence": "My sister would love to play with the dodish horse.",
     "familiar": "horse"
   },
   {
@@ -108,7 +108,7 @@ var list_of_sentences = [
     "valence": "negative",
     "novel": "nuppical",
     "part": "training",
-    "sentence": "I never want to try a nuppical apple.",
+    "sentence": "I would never try a nuppical apple.",
     "familiar": "apple"
   },
   {
@@ -129,7 +129,7 @@ var list_of_sentences = [
     "valence": "negative",
     "novel": "nuppical",
     "part": "training",
-    "sentence": "I would never choose a nuppical apple.",
+    "sentence": "I hope they don�t have a nuppical apple.",
     "familiar": "apple"
   },
   {
@@ -171,7 +171,7 @@ var list_of_sentences = [
     "valence": "negative",
     "novel": "nuppical",
     "part": "training",
-    "sentence": "No one wants to ride the nuppical horse.",
+    "sentence": "I don�t trust the nuppical horse.",
     "familiar": "horse"
   },
   {
@@ -220,7 +220,7 @@ var list_of_sentences = [
     "valence": "neutral",
     "novel": "foobly",
     "part": "training",
-    "sentence": "The recipe included a foobly apple.",
+    "sentence": "I could see a foobly apple.",
     "familiar": "apple"
   },
   {
@@ -234,7 +234,7 @@ var list_of_sentences = [
     "valence": "neutral",
     "novel": "foobly",
     "part": "training",
-    "sentence": "I found a foobly apple.",
+    "sentence": "I put the foobly apple on the table.",
     "familiar": "apple"
   },
   {
@@ -248,7 +248,7 @@ var list_of_sentences = [
     "valence": "neutral",
     "novel": "foobly",
     "part": "training",
-    "sentence": "In the stable there was a foobly horse.",
+    "sentence": "Some farms have a foobly horse.",
     "familiar": "horse"
   },
   {

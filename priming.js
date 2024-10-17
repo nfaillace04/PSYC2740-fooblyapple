@@ -6,8 +6,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "apple",
-      "type": "novel",
-     //get rid of relatedness and type bc we're not experimenting with co-occurrence
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -19,8 +17,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -32,8 +28,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -45,8 +39,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "apple",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -58,8 +50,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "apple",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -71,8 +61,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -84,8 +72,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -97,8 +83,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "apple",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -115,8 +99,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "foobly",
       "target_word": "apple",
-      "type": "direct",
-      "relatedness": "related",
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -128,8 +110,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "mipp",
       "target_word": "apple",
-      "type": "shared",
-      "relatedness": "unrelated",
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -141,8 +121,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "dodish",
       "target_word": "apple",
-      "type": "direct",
-      "relatedness": "unrelated",
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -155,8 +133,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "apple",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -168,8 +144,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "apple",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -181,8 +155,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "foobly",
       "target_word": "horse",
-      "type": "direct",
-      "relatedness": "unrelated",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -194,8 +166,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "mipp",
       "target_word": "horse",
-      "type": "shared",
-      "relatedness": "unrelated",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -207,8 +177,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "dodish",
       "target_word": "horse",
-      "type": "direct",
-      "relatedness": "related",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -221,8 +189,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -234,8 +200,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -247,8 +211,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "foobly",
       "target_word": "apple",
-      "type": "direct",
-      "relatedness": "related",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -260,8 +222,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "mipp",
       "target_word": "apple",
-      "type": "shared",
-      "relatedness": "related",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -273,8 +233,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "dodish",
       "target_word": "apple",
-      "type": "direct",
-      "relatedness": "unrelated",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -287,8 +245,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "apple",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -300,8 +256,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "apple",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -313,8 +267,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "foobly",
       "target_word": "horse",
-      "type": "direct",
-      "relatedness": "unrelated",
       "correct_response": 1,
       "image_path": "horseapple2.png",
       "correct_key": "A"
@@ -326,8 +278,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "mipp",
       "target_word": "horse",
-      "type": "shared",
-      "relatedness": "unrelated",
       "correct_response": 1,
       "image_path": "horseapple2.png",
       "correct_key": "A"
@@ -339,8 +289,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "dodish",
       "target_word": "horse",
-      "type": "direct",
-      "relatedness": "related",
       "correct_response": 1,
       "image_path": "horseapple2.png",
       "correct_key": "A"
@@ -352,8 +300,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 1,
       "image_path": "horseapple2.png",
       "correct_key": "A"
@@ -365,8 +311,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 1,
       "image_path": "horseapple2.png",
       "correct_key": "A"
@@ -378,8 +322,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "foobly",
       "target_word": "apple",
-      "type": "direct",
-      "relatedness": "related",
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -391,8 +333,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "mipp",
       "target_word": "apple",
-      "type": "shared",
-      "relatedness": "related",
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -404,8 +344,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "dodish",
       "target_word": "apple",
-      "type": "direct",
-      "relatedness": "unrelated",
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -418,8 +356,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "apple",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -431,8 +367,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "apple",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 1,
       "image_path": "applehorse2.png",
       "correct_key": "A"
@@ -444,8 +378,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "foobly",
       "target_word": "horse",
-      "type": "direct",
-      "relatedness": "unrelated",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -457,8 +389,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "mipp",
       "target_word": "horse",
-      "type": "shared",
-      "relatedness": "unrelated",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -470,8 +400,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "dodish",
       "target_word": "horse",
-      "type": "direct",
-      "relatedness": "related",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -484,8 +412,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -497,8 +423,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "applehorse2.png",
       "correct_key": "L"
@@ -510,8 +434,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "foobly",
       "target_word": "apple",
-      "type": "direct",
-      "relatedness": "related",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -523,8 +445,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "mipp",
       "target_word": "apple",
-      "type": "shared",
-      "relatedness": "related",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -536,8 +456,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "dodish",
       "target_word": "apple",
-      "type": "direct",
-      "relatedness": "unrelated",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -550,8 +468,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "apple",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -563,8 +479,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "apple",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 3,
       "image_path": "horseapple2.png",
       "correct_key": "L"
@@ -576,8 +490,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "foobly",
       "target_word": "horse",
-      "type": "direct",
-      "relatedness": "unrelated",
       "correct_response": 1,
       "image_path": "horseapple2.png",
       "correct_key": "A"
@@ -589,8 +501,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "mipp",
       "target_word": "horse",
-      "type": "shared",
-      "relatedness": "unrelated",
       "correct_response": 1,
       "image_path": "horseapple2.png",
       "correct_key": "A"
@@ -602,8 +512,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "dodish",
       "target_word": "horse",
-      "type": "direct",
-      "relatedness": "related",
       "correct_response": 1,
       "image_path": "horseapple2.png",
       "correct_key": "A"
@@ -616,8 +524,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "nuppical",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 1,
       "image_path": "horseapple2.png",
       "correct_key": "A"
@@ -629,8 +535,6 @@ var practice_stimuli = [
       "part": "priming",
       "prime_word": "boff",
       "target_word": "horse",
-      "type": "novel",
-      "relatedness": "novel",
       "correct_response": 1,
       "image_path": "horseapple2.png",
       "correct_key": "A"
