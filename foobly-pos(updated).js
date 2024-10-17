@@ -1,4 +1,4 @@
-var test_stimuli2= [
+var test_stimuli2= _[
   {
     "valence": "positive",
     "novel": "foobly",
