@@ -1,4 +1,4 @@
-var meaning_check = [
+var meaning_check1 = [
     {
         cue: "Please write your own sentence using the following word: dodish"
     },
