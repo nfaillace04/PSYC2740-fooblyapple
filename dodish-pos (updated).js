@@ -1,4 +1,4 @@
-[
+var test_stimuli1= [
   {
     "valence": "positive",
     "novel": "dodish",
