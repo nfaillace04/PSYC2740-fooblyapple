@@ -32,6 +32,10 @@
 
     var CONDITION = jsPsych.randomization.sampleWithoutReplacement([...Array(3).keys()], 1)[0];
 
+    console.log("CONDITION" + CONDITION);
+
+    var experiment_stimuli = get_stimuli(CONDITION)
+
     var sentence_number = 0
      
     var sentence = {
@@ -127,7 +131,7 @@
 
     var training_procedure = {
         timeline: [sentence, attention_conditional],
-        timeline_variables: list_of_sentences, 
+        timeline_variables: experiment_stimuli, 
         randomize_order: true
     };
 
