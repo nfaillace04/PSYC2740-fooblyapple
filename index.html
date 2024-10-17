@@ -30,6 +30,8 @@
 
     console.log("random_attention_trials= " + random_attention_trials);
 
+    var CONDITION = jsPsych.randomization.sampleWithoutReplacement([...Array(3).keys()], 1)[0];
+
     var sentence_number = 0
      
     var sentence = {
@@ -183,7 +185,22 @@
          ],
          show_clickable_nav: true
     };
-
+    var thank_you = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: "Thank you! You can press any key to end the experiment.",
+        data: {
+            typeoftrial: 'thank_you'
+        },
+    }
+    function get_stimuli(CONDITION) {
+        if (CONDITION == 0) {
+            return test_stimuli_1;
+        } else if (CONDITION == 1) {
+            return test_stimuli_2;
+        } else {
+            return test_stimuli_3;
+    }
+}
 
 jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions, priming_procedure]);
 //jsPsych.run([priming_procedure]);
