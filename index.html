@@ -8,10 +8,7 @@
     <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.3"></script>
     <script src="jspsych/modified-image-plugin.js"></script>
     <script src = "sentences-dodish-pos.js"></script>
-
-    <script src = "meaningcheck1.js"></script>
-    <script src = "meaningcheck2.js"></script>
-    <script src = "meaningcheck3.js"></script>
+    <script src = "meaningcheck.js"></script>
     <script src = "priming.js"></script>
     <script src="https://unpkg.com/@jspsych/plugin-instructions@1.1.4"></script>
 
@@ -26,11 +23,6 @@
         jsPsych.data.addProperties({
             ID: id
          });
-    var CONDITION = jsPsych.randomization.sampleWithoutReplacement([...Array(3).keys()], 1)[0];
-
-    console.log("CONDITION" + CONDITION);
-
-    var experiment_stimuli = get_stimuli(CONDITION)
 
     var random_attention_trials = jsPsych.randomization.sampleWithoutReplacement([...Array(35).keys()].map(x => x + 5), 3);
 
@@ -69,21 +61,7 @@
     }
     };
 
-    var meaningcheck1 = {
-        type: jsPsychSurveyText,
-        questions: [
-            {prompt: jsPsych.timelineVariable('cue')}
-        ],
-    };
-
-    var meaningcheck2 = {
-        type: jsPsychSurveyText,
-        questions: [
-            {prompt: jsPsych.timelineVariable('cue')}
-        ],
-    };
-
-    var meaningcheck3 = {
+    var meaning_check = {
         type: jsPsychSurveyText,
         questions: [
             {prompt: jsPsych.timelineVariable('cue')}
@@ -158,8 +136,20 @@
     };
 
     var meaningcheck_procedure1= {
-        timeline: [meaningcheck],
-        timeline_variables: meaning_check1, meaning_check2, meaning_check3,
+        timeline: [meaningcheck1],
+        timeline_variables: meaning_check1,
+        repetitions: 1
+    };
+
+    var meaningcheck_procedure2= {
+        timeline: [meaningcheck2],
+        timeline_variables: meaning_check2,
+        repetitions: 1
+    };
+
+    var meaningcheck_procedure3= {
+        timeline: [meaningcheck3],
+        timeline_variables: meaning_check3,
         repetitions: 1
     };
 
@@ -191,23 +181,7 @@
          ],
          show_clickable_nav: true
     };
-    var thank_you = {
-        type: jsPsychHtmlKeyboardResponse,
-        stimulus: "Thank you! You can press any key to end the experiment.",
-        data: {
-            typeoftrial: 'thank_you'
-        },
-    }
 
-    function get_stimuli(CONDITION) {
-    if (CONDITION == 0) {
-        return test_stimuli_1; // Stimuli for condition 0
-    } else if (CONDITION == 1) {
-        return test_stimuli_2; // Stimuli for condition 1
-    } else {
-        return test_stimuli_3; // Stimuli for condition 2
-    }
-}
 
 jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions, priming_procedure]);
 //jsPsych.run([priming_procedure]);
