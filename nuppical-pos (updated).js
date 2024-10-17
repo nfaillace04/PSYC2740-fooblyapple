@@ -1,4 +1,4 @@
-test_stimuli3= [
+test_stimuli_3= [
   {
     "valence": "positive",
     "novel": "nuppical",
