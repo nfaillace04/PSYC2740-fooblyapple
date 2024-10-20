@@ -42,13 +42,14 @@
         type:jsPsychHtmlKeyboardResponse,
         stimulus: jsPsych.timelineVariable('sentence'),
         choices: [' '],
-        trial_duration: 100,
         on_finish: function(data) {
             sentence_number = (sentence_number + 1) % 40;
             //console.log("sentence_number= " + sentence_number);
         },
         data: {
-            typeoftrial: 'sentence'
+            typeoftrial: 'sentence',
+            novel: jsPsych.timelineVariable('novel'),
+            valence: jsPsych.timelineVariable('valence')
         }
     };
 
@@ -63,18 +64,17 @@
         type: jsPsychSurveyText,
         questions: [{prompt: "Type any ONE novel word from the previous sentence:"}],
         data: {
-            typeoftrial: 'attention'
+            typeoftrial: 'attention',
         },
         on_finish: function(data){
             var last_trial_data = jsPsych.data.get().filter({typeoftrial: 'sentence'}).last(1).values()[0];
             console.log('last_trial_data=',last_trial_data),
-            console.log('data.novel=', data.novel)
-            console.log('data.response=', data.response)
 
             data.novel = last_trial_data.novel,
             data.response = data.response.Q0;
-
-           if(
+            
+            console.log('response', data.response)
+        if(
             jsPsych.pluginAPI.compareKeys(data.response, data.novel)
            ){
             data.correct = 1,
@@ -101,7 +101,8 @@
         ],
         data: {
             typeoftrial: 'meaning_check'
-        }
+        },
+        repetitions: 3
     };
 
     var fixation = {
