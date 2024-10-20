@@ -129,7 +129,7 @@ test_stimuli_3= [
     "valence": "negative",
     "novel": "foobly",
     "part": "training",
-    "sentence": "I hope they don�t have a foobly apple.",
+    "sentence": "I hope they don't have a foobly apple.",
     "familiar": "apple"
   },
   {
@@ -171,7 +171,7 @@ test_stimuli_3= [
     "valence": "negative",
     "novel": "foobly",
     "part": "training",
-    "sentence": "I don�t trust the foobly horse.",
+    "sentence": "I don't trust the foobly horse.",
     "familiar": "horse"
   },
   {

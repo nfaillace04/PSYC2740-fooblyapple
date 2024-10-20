@@ -102,6 +102,9 @@
         data: {
             typeoftrial: 'meaning_check'
         },
+        on_finish: function(data){
+            data.response = data.response.Q0
+          },
         repetitions: 3
     };
 
@@ -154,9 +157,12 @@
             return "<span style= 'font-size:200%'><br>" + String(jsPsych.timelineVariable('target_word')) + "<br></span";
         },
         data: {
-            typeoftrial: 'target'
-        }
-    };
+            typeoftrial: 'target',
+        },
+        on_finish: function(data){
+            data.response = data.response.Q0
+          },
+     }
 
     var priming_feedback = {
       timeline: [slow_experiment_trial],
@@ -239,7 +245,7 @@
     }
 }
 
-jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions, priming_procedure]);
+jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions, priming_procedure, thank_you]);
 //jsPsych.run([priming_procedure]);
   </script>
 </html>

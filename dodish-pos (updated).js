@@ -129,7 +129,7 @@ var test_stimuli_1= [
     "valence": "negative",
     "novel": "nuppical",
     "part": "training",
-    "sentence": "I hope they don�t have a nuppical apple.",
+    "sentence": "I hope they don't have a nuppical apple.",
     "familiar": "apple"
   },
   {
@@ -171,7 +171,7 @@ var test_stimuli_1= [
     "valence": "negative",
     "novel": "nuppical",
     "part": "training",
-    "sentence": "I don�t trust the nuppical horse.",
+    "sentence": "I don't trust the nuppical horse.",
     "familiar": "horse"
   },
   {

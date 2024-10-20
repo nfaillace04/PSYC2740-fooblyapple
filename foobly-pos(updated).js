@@ -131,7 +131,7 @@ var test_stimuli_2= [
     "valence": "negative",
     "novel": "dodish",
     "part": "training",
-    "sentence": "I hope they don�t have a dodish apple.",
+    "sentence": "I hope they don't have a dodish apple.",
     "familiar": "apple"
   },
   {
@@ -173,7 +173,7 @@ var test_stimuli_2= [
     "valence": "negative",
     "novel": "dodish",
     "part": "training",
-    "sentence": "I don�t trust the dodish horse.",
+    "sentence": "I don't trust the dodish horse.",
     "familiar": "horse"
   },
   {
