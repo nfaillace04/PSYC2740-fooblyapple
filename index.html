@@ -100,7 +100,8 @@
             {prompt: jsPsych.timelineVariable('cue')}
         ],
         data: {
-            typeoftrial: 'meaning_check'
+            typeoftrial: 'meaning_check',
+            cue: jsPsych.timelineVariable('cue')
         },
         on_finish: function(data){
             data.response = data.response.Q0
@@ -188,9 +189,12 @@
     var meaningcheck_instructions = {
         type: jsPsychInstructions,
         pages: [
-            'Done with sentences. Please follow the next set of instructions.',
+            "You are done with the first part! <br><br>In this section, you will be asked to write a new sentence using one of the novel words from the previous section. <br><br>Keep in mind that in this game, you can only use the words you read about in the reading session. Your sentence should demonstrate your understanding of the word's meaning. <br><br>Type in your answer and press CONTINUE when you are ready for the next one.",
          ],
-         show_clickable_nav: true
+         show_clickable_nav: true,
+         data: {
+            typeoftrial: 'instructions'
+        }
     };
     var combined_meaning_check = [...meaning_check1,...meaning_check2]
 
@@ -218,15 +222,22 @@
             'On the screen, you will be presented with one sentence at a time. <br><br>Read them carefully. When you are ready, press SPACE BAR for the next sentence. <br><br>To ensure you are reading carefully, there will be surprise questions during the reading session. <br><br>You will be prompted to type the novel words from the last sentence you read. <br><br>Minor spelling mistakes will be tolerated. Type in your answer and press enter when you are ready to move on to the next sentence.',
             'You will now read the sentences. <br> Press SPACE BAR when you have read the sentence and want to move on to the next.'
          ],
-         show_clickable_nav: true
+         show_clickable_nav: true,
+         data: {
+            typeoftrial: 'instructions'
+        }
     };
 
     var priming_instructions = {
         type: jsPsychInstructions,
         pages: [
-            'Priming task is about to begin.'
+            'This is our final game. <br><br>You will be presented with slides showing an apple and a horse. <br><br>Your task will be to respond as quickly as possible, on which side of the screen the apple or the horse is shown. <br><br>On the same screen, with pictures, two words will be presented. Read the first word, but respond in accordance with the second word. <br><br>For example, if you see words “boff” and “apple”, respond where the apple is. <br><br>If you see words “boff” and “horse”, respond where the horse is.',
+            'You will press A if you want to choose the picture on the left and <br><br> L if you want to choose the picture on the right.'
          ],
-         show_clickable_nav: true
+         show_clickable_nav: true,
+         data: {
+            typeoftrial: 'instructions'
+        }
     };
     var thank_you = {
         type: jsPsychHtmlKeyboardResponse,
