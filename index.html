@@ -162,7 +162,8 @@
         },
         on_finish: function(data){
             data.response = data.response.Q0
-          },
+            data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_key)
+        }
      }
 
     var priming_feedback = {
@@ -211,7 +212,7 @@
 
     var priming_procedure = {
         timeline: [fixation, image, prime, target, priming_feedback],
-        timeline_variables: test_stimuli,
+        timeline_variables: practice_stimuli, test_stimuli,
         randomize_order: true
     };
     
@@ -257,6 +258,6 @@
 }
 
 //jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions, priming_procedure, thank_you]);
-jsPsych.run([meaningcheck_instructions, meaningcheck_procedure]);
+jsPsych.run([priming_procedure]);
   </script>
 </html>
