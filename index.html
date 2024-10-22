@@ -184,7 +184,8 @@
     var training_procedure = {
         timeline: [sentence, attention_conditional],
         timeline_variables: experiment_stimuli, 
-        randomize_order: true
+        randomize_order: true,
+        repetitions: 2
     };
 
     var meaningcheck_instructions = {
@@ -210,9 +211,15 @@
         repetitions: 1
     };
 
+    var practice_procedure = {
+        timeline: [fixation, image, prime, target, priming_feedback],
+        timeline_variables: practice_stimuli,
+        randomize_order: true
+    };
+
     var priming_procedure = {
         timeline: [fixation, image, prime, target, priming_feedback],
-        timeline_variables: practice_stimuli, test_stimuli,
+        timeline_variables: test_stimuli,
         randomize_order: true
     };
     
@@ -257,7 +264,7 @@
     }
 }
 
-//jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions, priming_procedure, thank_you]);
-jsPsych.run([priming_procedure]);
+jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions,practice_procedure, priming_procedure,]);
+//jsPsych.run([priming_procedure]);
   </script>
 </html>
