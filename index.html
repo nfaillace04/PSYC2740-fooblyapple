@@ -251,8 +251,8 @@
     };
     var demographics_survey1 = {
     type: jsPsychSurveyText,
+    preamble: "<h2>Demographics Questionnaire</h2>", name: 'heading', rows: 1, columns: 50,
     questions: [
-        {prompt: "<h2>Demographics Questionnaire</h2>", name: 'heading', rows: 1, columns: 50},
         {prompt: "What is your age?", name: 'age'},
         {prompt: "What is your gender?", name: 'gender'},
         {prompt: "How many years of formal education have you had? (consider graduating high school to be 12 years)", name: 'education'},
@@ -311,16 +311,20 @@ var additional_info_question = {
 
 var follow_up_questions = {
     type: jsPsychSurveyText,
+    preamble: "You indicated that English is not your first language. Please answer the following questions:",
     questions: [
-        {prompt: "You indicated that English is not your first language. Please answer the following questions:", name: 'follow_up_heading', rows: 1, columns: 50},
         {prompt: "What is your first language?", name: 'first_language_detail'},
         {prompt: "At what age did you learn English?", name: 'age_learned_english'}
     ],
     data: {
         typeoftrial: 'follow_up_demographics'
     },
+}
+var follow_up_procedure = {
+        timeline: [follow_up_questions],
     conditional_function: function() {
-        return jsPsych.data.get().last(1).values()[0].response.first_language === 'No';
+        var lastTrialData = jsPsych.data.get().last(1).values()[0];
+        return lastTrialData.response.first_language === 'No';
     }
 };
 
@@ -343,6 +347,6 @@ var follow_up_questions = {
 }
 
 //jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions,practice_procedure, priming_procedure, demographics_survey, thank_you]);
-jsPsych.run([demographics_survey1, demographics_survey2, follow_up_questions, additional_info_question, thank_you]);
+jsPsych.run([demographics_survey1, demographics_survey2, follow_up_procedure, additional_info_question, thank_you]);
   </script>
 </html>
