@@ -16,7 +16,7 @@
     <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.0.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-multi-select@1.1.3"></script>
     <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.0.0"></script>
-
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.3"></script>
 
   </head>
   <body>
@@ -28,7 +28,13 @@
         console.log("id=", id)
         jsPsych.data.addProperties({
             ID: id
-         });
+    });
+    
+    var preload = {
+    type: jsPsychPreload,
+    auto_preload: true,
+    images: ['horseapple2.png', 'applehorse2.png']
+};
 
     var random_attention_trials = jsPsych.randomization.sampleWithoutReplacement([...Array(35).keys()].map(x => x + 5), 3);
 
@@ -163,6 +169,8 @@
         },
         data: {
             typeoftrial: 'target',
+            target: jsPsych.timelineVariable('target_word'),
+            prime: jsPsych.timelineVariable('prime_word'),
             correct_key: jsPsych.timelineVariable('correct_key')
         },
         on_finish: function(data){
