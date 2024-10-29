@@ -123,7 +123,7 @@
         type:jsPsychHtmlKeyboardResponse,
         stimulus: '+',
         choices: ['NO_KEYS'],
-        trial_duration: 500,
+        trial_duration: 300,
         data: {
             typeoftrial: 'fixation'
         }
@@ -181,7 +181,7 @@
         }
      }
 
-    var priming_feedback = {
+     var priming_feedback = {
       timeline: [slow_experiment_trial],
       conditional_function: function (){
         var rt = jsPsych.data.get().last(1).values()[0].rt;
@@ -196,11 +196,34 @@
         }
     };
 
+    var practice_feedback = {
+   type: jsPsychHtmlKeyboardResponse,
+   stimulus:  function(){
+     var rt = jsPsych.data.get().last(1).values()[0].rt;
+     var correct = jsPsych.data.get().last(1).values()[0].correct;
+     if(rt > 800 & correct == false){
+       return "<b>Incorrect and too slow</b>! <br><br> Please try to respond faster.";
+     } else if(rt < 800 & correct == false){
+       return "<b>Incorrect</b>! <br><br> Please try to respond faster.";
+     } else if(rt > 800 & correct == true){
+       return "<b>Too slow</b>! <br><br> Please try to respond faster.";
+     } else {
+       return "<b>Correct</b>!";
+     }
+   },
+   choices: "NO_KEYS",
+   trial_duration: 1000,
+   data: {
+     typeoftrial: 'feedback'
+   }
+ }
+
+
     var training_procedure = {
         timeline: [sentence, attention_conditional],
         timeline_variables: experiment_stimuli, 
         randomize_order: true,
-        repetitions: 2
+        repetitions: 3
     };
 
     var meaningcheck_instructions = {
@@ -227,7 +250,7 @@
     };
 
     var practice_procedure = {
-        timeline: [fixation, image, prime, target, priming_feedback],
+        timeline: [fixation, image, prime, target, practice_feedback],
         timeline_variables: practice_stimuli,
         randomize_order: true
     };
@@ -235,7 +258,8 @@
     var priming_procedure = {
         timeline: [fixation, image, prime, target, priming_feedback],
         timeline_variables: test_stimuli,
-        randomize_order: true
+        randomize_order: true,
+        repetitions: 2
     };
     
     var initial_instructions = {
