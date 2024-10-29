@@ -8,7 +8,7 @@ var practice_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": "practice"
   },
@@ -21,7 +21,7 @@ var practice_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": "practice"
   },
@@ -34,7 +34,7 @@ var practice_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": "practice"
   },
@@ -47,7 +47,7 @@ var practice_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": "practice"
   },
@@ -60,7 +60,7 @@ var practice_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": "practice"
   },
@@ -73,7 +73,7 @@ var practice_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": "practice"
   },
@@ -86,7 +86,7 @@ var practice_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": "practice"
   },
@@ -99,7 +99,7 @@ var practice_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": "practice"
   },
@@ -112,7 +112,7 @@ var practice_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": "practice"
   },
@@ -127,7 +127,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -140,7 +140,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -153,7 +153,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -166,7 +166,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -179,7 +179,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -192,7 +192,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -205,7 +205,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -218,7 +218,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -231,7 +231,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -244,7 +244,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -257,7 +257,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -270,7 +270,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -283,7 +283,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -296,7 +296,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -309,7 +309,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -322,7 +322,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -335,7 +335,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -348,7 +348,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -361,7 +361,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
@@ -374,7 +374,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
@@ -387,7 +387,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
@@ -400,7 +400,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
@@ -413,7 +413,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
@@ -426,7 +426,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
@@ -439,7 +439,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -452,7 +452,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -465,7 +465,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -478,7 +478,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -491,7 +491,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -504,7 +504,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 1,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "A",
     "": ""
   },
@@ -517,7 +517,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -530,7 +530,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -543,7 +543,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -556,7 +556,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -569,7 +569,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -582,7 +582,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 3,
-    "image_path": "applehorse.png",
+    "image_path": "applehorse2.png",
     "correct_key": "L",
     "": ""
   },
@@ -595,7 +595,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -608,7 +608,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -621,7 +621,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "familiar",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -634,7 +634,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -647,7 +647,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -660,7 +660,7 @@ var test_stimuli = [
     "target_word": "apple",
     "type": "novel",
     "correct": 3,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "L",
     "": ""
   },
@@ -673,7 +673,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
@@ -686,7 +686,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
@@ -699,7 +699,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "familiar",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
@@ -712,7 +712,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
@@ -725,7 +725,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
@@ -738,7 +738,7 @@ var test_stimuli = [
     "target_word": "horse",
     "type": "novel",
     "correct": 1,
-    "image_path": "horseapple.png",
+    "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
   },
