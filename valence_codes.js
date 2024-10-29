@@ -1,4 +1,4 @@
-[
+var valence_code = [
   {
     "condition": 0,
     "prime_word": "dodish",
