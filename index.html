@@ -298,7 +298,8 @@
         type: jsPsychInstructions,
         pages: [
             'The experiment is now complete! We will now ask you a short series of demographics questions.'
-        ]
+        ],
+        show_clickable_nav: true
     }
     var demographics_survey1 = {
     type: jsPsychSurveyText,
@@ -388,8 +389,8 @@ var follow_up_questions = {
     type: jsPsychSurveyText,
     preamble: "You indicated that English is not your first language. Please answer the following questions:",
     questions: [
-        {prompt: "What is your first language?", name: 'first_language_detail'},
-        {prompt: "At what age did you learn English?", name: 'age_learned_english'}
+        {prompt: "What is your first language?", name: 'first_language_detail', required: true},
+        {prompt: "At what age did you learn English?", name: 'age_learned_english', required: true}
     ],
     data: {
         typeoftrial: 'follow_up_demographics'
