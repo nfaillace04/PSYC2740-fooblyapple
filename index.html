@@ -24,7 +24,9 @@
   <body>
   </body>
   <script>
-    const jsPsych = initJsPsych();
+    const jsPsych = initJsPsych({
+        show_progress_bar: true
+    });
     
     var id = Math.floor(Math.random()* 1000000000);
         console.log("id=", id)
@@ -457,7 +459,7 @@ var demographics = {
     }
 }
 
-//jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions,practice_procedure, priming_procedure, demographics, thank_you]);
- jsPsych.run([demographics, thank_you])
+jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions,practice_procedure, priming_procedure, demographics, thank_you]);
+ //jsPsych.run([demographics, thank_you])
  </script>
 </html>
