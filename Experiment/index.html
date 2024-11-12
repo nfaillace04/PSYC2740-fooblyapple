@@ -215,11 +215,11 @@
      var rt = jsPsych.data.get().last(1).values()[0].rt;
      var correct = jsPsych.data.get().last(1).values()[0].correct;
      if(rt > 800 & correct == false){
-       return "<b>Incorrect and too slow</b>! <br><br> Please try to respond faster.";
+       return "<b>Incorrect and too slow!</b> <br><br> Please try to respond faster.";
      } else if(rt < 800 & correct == false){
        return "<b>Incorrect.</b> <br><br> Please try to respond faster.";
      } else if(rt > 800 & correct == true){
-       return "<b>Too slow</b>! <br><br> Please try to respond faster.";
+       return "<b>Too slow!</b> <br><br> Please try to respond faster.";
      } else {
        return "<b>Correct!</b>";
      }
