@@ -29,7 +29,7 @@
     });
     
     var id = Math.floor(Math.random()* 1000000000);
-        console.log("id=", id)
+        //console.log("id=", id)
         jsPsych.data.addProperties({
             ID: id
     });
@@ -42,13 +42,23 @@
 
     var random_attention_trials = jsPsych.randomization.sampleWithoutReplacement([...Array(35).keys()].map(x => x + 5), 3);
 
-    console.log("random_attention_trials= " + random_attention_trials);
+    //console.log("random_attention_trials= " + random_attention_trials);
 
-    var CONDITION = jsPsych.randomization.sampleWithoutReplacement([...Array(3).keys()], 1)[0];
+    //var CONDITION = jsPsych.randomization.sampleWithoutReplacement([...Array(3).keys()], 1)[0];
 
-    console.log("CONDITION" + CONDITION);
+    //console.log("CONDITION" + CONDITION);
 
     var experiment_stimuli = get_stimuli(CONDITION)
+
+    function get_stimuli(CONDITION) {
+        if (CONDITION == 1) {
+            return test_stimuli_1;
+        } else if (CONDITION == 2) {
+            return test_stimuli_2;
+        } else {
+            return test_stimuli_3;
+    }
+}
 
     var sentence_number = 0
      
@@ -82,20 +92,20 @@
         },
         on_finish: function(data){
             var last_trial_data = jsPsych.data.get().filter({typeoftrial: 'sentence'}).last(1).values()[0];
-            console.log('last_trial_data=',last_trial_data),
+            //console.log('last_trial_data=',last_trial_data),
 
             data.novel = last_trial_data.novel,
             data.response = data.response.Q0;
             
-            console.log('response', data.response)
+            //console.log('response', data.response)
         if(
             jsPsych.pluginAPI.compareKeys(data.response, data.novel)
            ){
-            data.correct = 1,
-            console.log('correct=' + data.correct)
+            data.correct = 1
+            //console.log('correct=' + data.correct)
            } else {
-            data.correct = 0,
-            console.log('correct=' + data.correct)
+            data.correct = 0
+            //console.log('correct=' + data.correct)
            }
          }
     };
@@ -178,9 +188,8 @@
             correct_key: jsPsych.timelineVariable('correct_key')
         },
         on_finish: function(data){
-           /// data.response = data.response.Q0
-           console.log("data.response",data.response)
-           console.log("data.correct_key",data.correct_key)
+           //console.log("data.response",data.response)
+           //console.log("data.correct_key",data.correct_key)
             data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_key)
         }
      }
@@ -247,11 +256,6 @@
         timeline_variables: combined_meaning_check,
         repetitions: 1,
     }
-
-    var training_plus_meaningcheck = {
-        timeline: [training_procedure, meaningcheck_instructions, meaningcheck_procedure],
-        repetitions: 1
-    };
 
     var practice_procedure = {
         timeline: [fixation, image, prime, target, practice_feedback],
@@ -433,7 +437,7 @@ var follow_up_procedure = {
         timeline: [follow_up_questions],
     conditional_function: function() {
         var lastTrialData = jsPsych.data.get().last(1).values()[0];
-        console.log("lastTrialData=",lastTrialData)
+        //console.log("lastTrialData=",lastTrialData)
         return lastTrialData.response === 1;
     }
 };
@@ -449,17 +453,9 @@ var demographics = {
         },
     };
 
-    function get_stimuli(CONDITION) {
-        if (CONDITION == 0) {
-            return test_stimuli_1;
-        } else if (CONDITION == 1) {
-            return test_stimuli_2;
-        } else {
-            return test_stimuli_3;
-    }
-}
+  
 
-jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions,practice_procedure, priming_procedure, demographics, thank_you]);
+jsPsych.run([initial_instructions, training_procedure, priming_instructions,practice_procedure, priming_procedure, meaningcheck_instructions, meaningcheck_procedure, thank_you]);
  //jsPsych.run([demographics, thank_you])
  </script>
 </html>
