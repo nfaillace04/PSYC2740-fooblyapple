@@ -317,6 +317,11 @@
     ],
     data: {
         typeoftrial: 'demographics',
+    },
+    on_finish: function(data){
+        data.age = data.response.age
+        data.gender = data.response.gender
+        data.education = data.response.education
     }
     };
         
@@ -334,6 +339,15 @@
     ],
     data: {
         typeoftrial: 'demographics',
+    },
+    on_finish: function(data){
+        data.race = data.response.race
+        if(data.race.length > 1){
+            data.race = "multiracial"
+        }
+        else{
+            data.race = data.race(0)
+        }
     }
     };
 
@@ -362,6 +376,11 @@
     data: {
         typeoftrial: 'demographics',
     },
+    on_finish: function(data){
+        data.hispanic = data.response.hispanic
+        data.dominant_hand = data.response.dominant_hand
+        data.alert_time = data.response.alert_time
+    }
     };
 
     var demographics_survey4 = {  
@@ -372,6 +391,10 @@
     data: {
         typeoftrial: 'demographics',
     },
+    on_finish: function(data){
+        if(data.response == 0){data.english = "yes"}
+        else(data.english = "no")
+    }
     };
 
 
@@ -382,7 +405,10 @@ var additional_info_question = {
     ],
     data: {
         typeoftrial: 'demographics'
-    }
+    },
+    on_finish: function(data){
+        data.other_info = data.response.additional_info
+    }    
 };
 
 var follow_up_questions = {
@@ -395,6 +421,10 @@ var follow_up_questions = {
     data: {
         typeoftrial: 'follow_up_demographics'
     },
+    on_finish: function(data){
+        data.first_language = data.response.first_language_detail
+        data.age_learned_english = data.response.age_learned_english
+    }
 }
 var follow_up_procedure = {
         timeline: [follow_up_questions],
@@ -406,7 +436,7 @@ var follow_up_procedure = {
 };
 
 var demographics = {
-    timeline: [demographics_intro, demographics_survey1, demographics_survey2, demographics_survey3, demographics_survey4, follow_up_questions, follow_up_procedure]
+    timeline: [demographics_intro, demographics_survey1, demographics_survey2, demographics_survey3, demographics_survey4, follow_up_procedure]
 }
     var thank_you = {
         type: jsPsychHtmlKeyboardResponse,
@@ -426,7 +456,6 @@ var demographics = {
     }
 }
 
-//jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions,practice_procedure, priming_procedure, demographics, thank_you]);
- jsPsych.run([demographics_survey4, follow_up_questions, follow_up_procedure])
+jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions,practice_procedure, priming_procedure, demographics, thank_you]);
  </script>
 </html>
