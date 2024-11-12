@@ -40,7 +40,7 @@
     images: ['horseapple2.png', 'applehorse2.png']
 };
 
-    var random_attention_trials = jsPsych.randomization.sampleWithoutReplacement([...Array(35).keys()].map(x => x + 5), 3);
+    var random_attention_trials = jsPsych.randomization.sampleWithoutReplacement([...Array(37).keys()].map(x => x + 5), 3);
 
     //console.log("random_attention_trials= " + random_attention_trials);
 
@@ -67,7 +67,7 @@
         stimulus: jsPsych.timelineVariable('sentence'),
         choices: [' '],
         on_finish: function(data) {
-            sentence_number = (sentence_number + 1) % 40;
+            sentence_number = (sentence_number + 1) % 42;
             //console.log("sentence_number= " + sentence_number);
         },
         data: {
