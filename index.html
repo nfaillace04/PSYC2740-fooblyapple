@@ -4,7 +4,7 @@
     <title> Foobly Apple's First Experiment</title>
     <script src="https://unpkg.com/jspsych@7.3.3"></script>
     <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
-    <link href="https://unpkg.com/jspsych@8.0.0/css/jspsych.css" rel="stylesheet" type="text/css" />
+    <link href="https://unpkg.com/jspsych@7.3.4/css/jspsych.css" rel="stylesheet" type="text/css" />
     <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.3"></script>
     <script src="jspsych/modified-image-plugin.js"></script>
     <script src = "dodish-pos (updated).js"></script>
@@ -206,11 +206,11 @@
      if(rt > 800 & correct == false){
        return "<b>Incorrect and too slow</b>! <br><br> Please try to respond faster.";
      } else if(rt < 800 & correct == false){
-       return "<b>Incorrect</b>! <br><br> Please try to respond faster.";
+       return "<b>Incorrect.</b> <br><br> Please try to respond faster.";
      } else if(rt > 800 & correct == true){
        return "<b>Too slow</b>! <br><br> Please try to respond faster.";
      } else {
-       return "<b>Correct</b>!";
+       return "<b>Correct!</b>";
      }
    },
    choices: "NO_KEYS",
@@ -387,6 +387,7 @@
     type: jsPsychHtmlButtonResponse,
     stimulus: "Is English your first language?",
     choices: ['Yes','No'],
+    show_clickable_nav: true,
 
     data: {
         typeoftrial: 'demographics',
@@ -456,6 +457,7 @@ var demographics = {
     }
 }
 
-jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions,practice_procedure, priming_procedure, demographics, thank_you]);
+//jsPsych.run([initial_instructions, training_plus_meaningcheck, priming_instructions,practice_procedure, priming_procedure, demographics, thank_you]);
+ jsPsych.run([demographics, thank_you])
  </script>
 </html>
