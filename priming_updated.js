@@ -741,18 +741,5 @@ var test_stimuli = [
     "image_path": "horseapple2.png",
     "correct_key": "A",
     "": ""
-  },
-  {
-    "block_number": "",
-    "triad": 2,
-    "target_image_pair": "",
-    "part": "",
-    "prime_word": "",
-    "target_word": "",
-    "type": "",
-    "correct": "",
-    "image_path": "",
-    "correct_key": "",
-    "": ""
   }
 ]
