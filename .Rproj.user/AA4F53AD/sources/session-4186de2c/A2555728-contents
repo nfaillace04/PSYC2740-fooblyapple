@@ -1,6 +1,12 @@
 ---
 title: "analysis_fooblyapple"
-output: html_document
-date: "2024-11-13"
+ggeom_point(date: "2024-11-12"
 ---
-
+#install packages
+```{r}
+install.packages("tidyverse")
+```
+#load packages
+```{r}
+library(tidyverse)
+```
