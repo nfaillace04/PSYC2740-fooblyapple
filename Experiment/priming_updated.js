@@ -10,7 +10,6 @@ var practice_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": "practice"
   },
   {
     "block_number": "practice",
@@ -23,7 +22,6 @@ var practice_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": "practice"
   },
   {
     "block_number": "practice",
@@ -36,7 +34,6 @@ var practice_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": "practice"
   },
   {
     "block_number": "practice",
@@ -49,7 +46,6 @@ var practice_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": "practice"
   },
   {
     "block_number": "practice",
@@ -62,7 +58,6 @@ var practice_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": "practice"
   },
   {
     "block_number": "practice",
@@ -75,7 +70,6 @@ var practice_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": "practice"
   },
   {
     "block_number": "practice",
@@ -88,7 +82,6 @@ var practice_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": "practice"
   },
   {
     "block_number": "practice",
@@ -101,7 +94,6 @@ var practice_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": "practice"
   },
   {
     "block_number": "practice",
@@ -114,7 +106,6 @@ var practice_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": "practice"
   },
 ]
 var test_stimuli = [
@@ -129,7 +120,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -142,7 +132,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -155,7 +144,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -168,7 +156,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -181,7 +168,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -194,7 +180,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -207,7 +192,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -220,7 +204,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -233,7 +216,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -246,7 +228,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -259,7 +240,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -272,7 +252,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -285,7 +264,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -298,7 +276,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -311,7 +288,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -324,7 +300,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -337,7 +312,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -350,7 +324,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -363,7 +336,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -376,7 +348,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -389,7 +360,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -402,7 +372,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -415,7 +384,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -428,7 +396,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -441,7 +408,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -454,7 +420,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -467,7 +432,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -480,7 +444,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -493,7 +456,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -506,7 +468,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "applehorse2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -518,8 +479,7 @@ var test_stimuli = [
     "type": "familiar",
     "correct": 3,
     "image_path": "applehorse2.png",
-    "correct_key": "L",
-    "": ""
+    "correct_key": "L"
   },
   {
     "block_number": 1,
@@ -532,7 +492,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -545,7 +504,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -558,7 +516,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -571,7 +528,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -584,7 +540,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "applehorse2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -597,7 +552,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -610,7 +564,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -623,7 +576,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -636,7 +588,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -649,7 +600,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -662,7 +612,6 @@ var test_stimuli = [
     "correct": 3,
     "image_path": "horseapple2.png",
     "correct_key": "L",
-    "": ""
   },
   {
     "block_number": 1,
@@ -675,7 +624,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -688,7 +636,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -701,7 +648,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -714,7 +660,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -727,7 +672,6 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   },
   {
     "block_number": 1,
@@ -740,6 +684,5 @@ var test_stimuli = [
     "correct": 1,
     "image_path": "horseapple2.png",
     "correct_key": "A",
-    "": ""
   }
 ]

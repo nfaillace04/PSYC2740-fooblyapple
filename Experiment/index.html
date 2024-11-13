@@ -185,7 +185,8 @@
             typeoftrial: 'target',
             target: jsPsych.timelineVariable('target_word'),
             prime: jsPsych.timelineVariable('prime_word'),
-            correct_key: jsPsych.timelineVariable('correct_key')
+            correct_key: jsPsych.timelineVariable('correct_key'),
+            block_number: jsPsych.timelineVariable('block_number')
         },
         on_finish: function(data){
            //console.log("data.response",data.response)
