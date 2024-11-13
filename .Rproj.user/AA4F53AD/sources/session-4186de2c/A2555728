@@ -1,12 +1,12 @@
 {
-    "id": "E7AADFE9",
+    "id": "A2555728",
     "path": "~/Library/CloudStorage/OneDrive-BowdoinCollege/Desktop/PSYC 2740-0/FOOBLY APPLE/foobly-apple-experiment/analysis_fooblyapple.Rmd",
     "project_path": "analysis_fooblyapple.Rmd",
     "type": "r_markdown",
-    "hash": "1251461160",
+    "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1731462984850.0,
+    "created": 1731466326270.0,
     "source_on_save": false,
     "relative_order": 1,
     "properties": {
@@ -21,7 +21,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1731463025824,
+    "last_content_update": 1731463025,
     "read_only": false,
     "read_only_alternatives": []
 }

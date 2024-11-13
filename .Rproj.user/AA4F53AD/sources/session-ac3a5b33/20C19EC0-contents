@@ -1,0 +1,102 @@
+---
+title: "Lily Formative Assignment 2"
+ggeom_point(date: "2024-11-05"
+---
+#install packages
+```{r}
+#install.packages("tidyverse")
+```
+#load packages
+```{r}
+library(tidyverse)
+```
+#load our data
+```{r}
+descriptive_data = read_csv("formative_assignment_2_data.csv")
+nrow(descriptive_data)
+ncol(descriptive_data)
+#Based on the code, the dataset has 3700 rows and 13 columns.
+```
+#unique participants and trials
+```{r}
+
+```
+#levels of variables
+```{r}
+as.factor(descriptive_data$prime_condition)
+as.factor(descriptive_data$state)
+#Both variables have 4 levels. prime_condition has phonological, semantic, both, and unrelated, and state has know, dontknow, tipoftongue, and other.
+
+```
+#subsets of columns
+```{r}
+prime_information = descriptive_data %>%
+ select(subject, prime_condition)
+```
+#subsets of rows
+```{r}
+phonological = descriptive_data %>%
+  filter(prime_condition == "phonological" &
+           accuracy == "1")
+```
+#summarizing accuracy per prime condition
+```{r}
+subject_acc = descriptive_data %>%
+  group_by(subject) %>%
+  summarize(mean_accuracy = mean(accuracy))
+```
+#summarizing accuracy per prime condition
+```{r}
+prime_acc = descriptive_data %>%
+  group_by(prime_condition) %>%
+  summarize(mean_accuracy = mean(accuracy), sd_accuracy = sd(accuracy))
+```
+#histogram of subject accuracy
+```{r}
+ggplot(data = subject_acc) +
+  geom_histogram(mapping = aes(x = mean_accuracy),
+                 binwidth = 0.2,
+                 fill = "skyblue",
+                 color = "black") +
+  labs(title = "Histogram of Mean Accuracy",
+       x = "Mean Accuracy",
+       y = "Count") +
+  theme_classic()
+```
+#histogram of prime condition
+```{r}
+ggplot(data = prime_acc)+
+  geom_bar(mapping= aes(x= prime_condition, y= mean_accuracy),
+        stat = "identity",
+        fill = "cornflowerblue",
+        color = "black")+
+  labs(title = "Mean Accuracy Across Prime Condition",
+       x = "Prime Condition",
+       y = "Mean Accuracy")+
+    theme_classic()
+```
+#prime data interpretation
+```{r}
+#According to the bar graph, the mean accuracy seems to differ across prime condition; however, a hypothesis test would need to be conducted before drawing any conclusions about the significance of these observed differences. Based on vision alone, participants seemed to on average most accurately answer trivia that had a phonologically related prime word. They seemed to have the least accuracy on average answering trivia primed by semantically related prime words.
+```
+#summarizing accuracy per prime condition and state
+```{r}
+state_prime_acc = descriptive_data %>%
+  filter(state %in% c("know", "dontknow", "other", "tipoftongue")) %>%
+  group_by(state, prime_condition) %>%
+  summarize(mean_accuracy = mean(accuracy))
+```
+#bar plot of prime condition and state
+```{r}
+ggplot(data = state_prime_acc)+
+  geom_bar(mapping = aes(x= prime_condition, y= mean_accuracy, fill= state),
+           stat = "identity",
+           position = "dodge")+
+  theme_linedraw()+
+           labs(title = "Mean Accuracy Across Prime Condition and Reported States",
+                x = "Prime Condition",
+                y = "Mean Accuracy")
+#Based on observed patterns, the prime condition seems to influence the retrieval state and yield more accurate responses with more confident retrieval state responses. While hypothesis and significance testing must still be done, it appears that phonological primes correlated with increased confidence of retrieval state responses "know" which in turn correlated with higher mean accuracy. On the other end, semantic primes had lower "know" responses which correlated with lower mean accuracy. There is still the possibility of confounding variables. Perhaps the semantic primes were related with more difficult or niche trivia questions.
+```
+
+

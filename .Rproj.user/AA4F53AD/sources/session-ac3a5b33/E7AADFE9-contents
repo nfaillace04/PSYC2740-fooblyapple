@@ -1,0 +1,12 @@
+---
+title: "analysis_fooblyapple"
+ggeom_point(date: "2024-11-12"
+---
+#install packages
+```{r}
+install.packages("tidyverse")
+```
+#load packages
+```{r}
+library(tidyverse)
+```
