@@ -4,12 +4,12 @@ ggeom_point(date: "2024-11-12"
 ---
 #install and load packages
 ```{r}
-install.packages("tidyverse")
+#install.packages("tidyverse")
 library(tidyverse)
 ```
 #import data
 ```{r}
-foobly_apple_data = read.csv("")
+foobly_apple_data = read.csv("../data/pilot-before.csv")
 ```
 #inspect data
 ```{r}
