@@ -2,11 +2,26 @@
 title: "analysis_fooblyapple"
 ggeom_point(date: "2024-11-12"
 ---
-#install packages
+#install and load packages
 ```{r}
 install.packages("tidyverse")
-```
-#load packages
-```{r}
 library(tidyverse)
 ```
+#import data
+```{r}
+foobly_apple_data = read.csv("")
+```
+#inspect data
+```{r}
+nrow(foobly_apple_data)
+ncol(foobly_apple_data)
+foobly_apple_data %>%
+pull(ID) %>% unique() %>% length
+foobly_apple_data %>%
+  group_by(ID) %>% count()
+#Our independent variables are "valence" (positive, negative, neutral) and "type" (novel or familiar).
+#Our dependent variables are "rt" for priming trials.
+as.factor(foobly_apple_data$valence)
+as.factor(foobly_apple_data$type)
+```
+

@@ -19,7 +19,10 @@ ncol(descriptive_data)
 ```
 #unique participants and trials
 ```{r}
-
+descriptive_data %>%
+pull(subject) %>% unique() %>% length
+descriptive_data %>%
+  group_by(ID) %>% count()
 ```
 #levels of variables
 ```{r}
