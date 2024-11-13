@@ -1,0 +1,461 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title> Foobly Apple's First Experiment</title>
+    <script src="https://unpkg.com/jspsych@7.3.3"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
+    <link href="https://unpkg.com/jspsych@7.3.4/css/jspsych.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.3"></script>
+    <script src="jspsych/modified-image-plugin.js"></script>
+    <script src = "dodish-pos (updated).js"></script>
+    <script src = "foobly-pos(updated).js"></script>
+    <script src = "nuppical-pos (updated).js"></script>
+    <script src = "meaningcheck.js"></script>
+    <script src = "priming_updated.js"></script>
+    <script src = "applehorse2.png"></script>
+    <script src = "horseapple2.png"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-instructions@1.1.4"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.0.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-select@1.1.3"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.0.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.3"></script>
+
+  </head>
+  <body>
+  </body>
+  <script>
+    const jsPsych = initJsPsych({
+        show_progress_bar: true
+    });
+    
+    var id = Math.floor(Math.random()* 1000000000);
+        //console.log("id=", id)
+        jsPsych.data.addProperties({
+            ID: id
+    });
+    
+    var preload = {
+    type: jsPsychPreload,
+    auto_preload: true,
+    images: ['horseapple2.png', 'applehorse2.png']
+};
+
+    var random_attention_trials = jsPsych.randomization.sampleWithoutReplacement([...Array(35).keys()].map(x => x + 5), 3);
+
+    //console.log("random_attention_trials= " + random_attention_trials);
+
+    //var CONDITION = jsPsych.randomization.sampleWithoutReplacement([...Array(3).keys()], 1)[0];
+
+    //console.log("CONDITION" + CONDITION);
+
+    var experiment_stimuli = get_stimuli(CONDITION)
+
+    function get_stimuli(CONDITION) {
+        if (CONDITION == 1) {
+            return test_stimuli_1;
+        } else if (CONDITION == 2) {
+            return test_stimuli_2;
+        } else {
+            return test_stimuli_3;
+    }
+}
+
+    var sentence_number = 0
+     
+    var sentence = {
+        type:jsPsychHtmlKeyboardResponse,
+        stimulus: jsPsych.timelineVariable('sentence'),
+        choices: [' '],
+        on_finish: function(data) {
+            sentence_number = (sentence_number + 1) % 40;
+            //console.log("sentence_number= " + sentence_number);
+        },
+        data: {
+            typeoftrial: 'sentence',
+            novel: jsPsych.timelineVariable('novel'),
+            valence: jsPsych.timelineVariable('valence')
+        }
+    };
+
+    var slow_experiment_trial = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: "<br>Too slow! <br><br> Please try to respond faster.",
+        choices:"NO_KEYS",
+        trial_duration: 1000
+    };
+
+    var attention = {
+        type: jsPsychSurveyText,
+        questions: [{prompt: "<span style='color: red;'>Type any ONE novel word from the previous sentence:"}],
+        data: {
+            typeoftrial: 'attention',
+        },
+        on_finish: function(data){
+            var last_trial_data = jsPsych.data.get().filter({typeoftrial: 'sentence'}).last(1).values()[0];
+            //console.log('last_trial_data=',last_trial_data),
+
+            data.novel = last_trial_data.novel,
+            data.response = data.response.Q0;
+            
+            //console.log('response', data.response)
+        if(
+            jsPsych.pluginAPI.compareKeys(data.response, data.novel)
+           ){
+            data.correct = 1
+            //console.log('correct=' + data.correct)
+           } else {
+            data.correct = 0
+            //console.log('correct=' + data.correct)
+           }
+         }
+    };
+
+    var attention_conditional = {
+        timeline: [attention],
+        conditional_function: function() {
+            if(random_attention_trials.includes(sentence_number)) {return true;}
+            else {return false;}
+    }
+    };
+
+    var meaning_check = {
+        type: jsPsychSurveyText,
+        questions: [
+            {prompt: jsPsych.timelineVariable('cue')}
+        ],
+        data: {
+            typeoftrial: 'meaning_check',
+            cue: jsPsych.timelineVariable('cue')
+        },
+        on_finish: function(data){
+            data.response = data.response.Q0
+          },
+        randomize_order: true
+    };
+
+    var fixation = {
+        type:jsPsychHtmlKeyboardResponse,
+        stimulus: '+',
+        choices: ['NO_KEYS'],
+        trial_duration: 300,
+        data: {
+            typeoftrial: 'fixation'
+        }
+    };
+
+    var image = {
+        type: jsPsychImageKeyboardResponse,
+        stimulus: jsPsych.timelineVariable('image_path'),
+        choices: ['NO_KEYS'],
+        trial_duration: 500,
+        stimulus_width: 500,
+        maintain_aspect_ratio: true,
+        prompt: "<span style = 'font-size:200%'><br><br></span>",
+        data: {
+            typeoftrial: 'image'
+        }
+    };
+
+    var prime = {
+        type: jsPsychImageKeyboardResponse,
+        stimulus: jsPsych.timelineVariable('image_path'),
+        choices: ['NO_KEYS'],
+        trial_duration: 500,
+        stimulus_width: 500,
+        maintain_aspect_ratio: true,
+        prompt: function(){
+            return "<span style= 'font-size:200%'><br>" + String(jsPsych.timelineVariable('prime_word')) + "<br></span";
+
+        },
+        data: {
+            typeoftrial: 'prime'
+        }
+    };
+
+    var target = {
+        type: jsPsychImageKeyboardResponse,
+        stimulus: jsPsych.timelineVariable('image_path'),
+        choices: ['A','L'],
+        stimulus_width: 500,
+        maintain_aspect_ratio: true,
+        prompt: function(){
+            return "<span style= 'font-size:200%'><br>" + String(jsPsych.timelineVariable('target_word')) + "<br></span";
+        },
+        data: {
+            typeoftrial: 'target',
+            target: jsPsych.timelineVariable('target_word'),
+            prime: jsPsych.timelineVariable('prime_word'),
+            correct_key: jsPsych.timelineVariable('correct_key')
+        },
+        on_finish: function(data){
+           //console.log("data.response",data.response)
+           //console.log("data.correct_key",data.correct_key)
+            data.correct = jsPsych.pluginAPI.compareKeys(data.response, data.correct_key)
+        }
+     }
+
+     var priming_feedback = {
+      timeline: [slow_experiment_trial],
+      conditional_function: function (){
+        var rt = jsPsych.data.get().last(1).values()[0].rt;
+        if (rt > 800){
+            return true;
+        } else {
+            return false;
+        }
+      },
+      data: {
+            typeoftrial: 'feedback'
+        }
+    };
+
+    var practice_feedback = {
+   type: jsPsychHtmlKeyboardResponse,
+   stimulus:  function(){
+     var rt = jsPsych.data.get().last(1).values()[0].rt;
+     var correct = jsPsych.data.get().last(1).values()[0].correct;
+     if(rt > 800 & correct == false){
+       return "<b>Incorrect and too slow</b>! <br><br> Please try to respond faster.";
+     } else if(rt < 800 & correct == false){
+       return "<b>Incorrect.</b> <br><br> Please try to respond faster.";
+     } else if(rt > 800 & correct == true){
+       return "<b>Too slow</b>! <br><br> Please try to respond faster.";
+     } else {
+       return "<b>Correct!</b>";
+     }
+   },
+   choices: "NO_KEYS",
+   trial_duration: 1000,
+   data: {
+     typeoftrial: 'feedback'
+   }
+ }
+
+
+    var training_procedure = {
+        timeline: [sentence, attention_conditional],
+        timeline_variables: experiment_stimuli, 
+        randomize_order: true,
+        repetitions: 3
+    };
+
+    var meaningcheck_instructions = {
+        type: jsPsychInstructions,
+        pages: [
+            "You are done with the first part! <br><br>In this section, you will be asked to write a new sentence using one of the novel words from the previous section. <br><br>Keep in mind that in this game, you can only use the words you read about in the reading session. Your sentence should demonstrate your understanding of the word's meaning. <br><br>Type in your answer and press CONTINUE when you are ready for the next one.",
+         ],
+         show_clickable_nav: true,
+         data: {
+            typeoftrial: 'instructions'
+        }
+    };
+    var combined_meaning_check = [...meaning_check1,...meaning_check2]
+
+    var meaningcheck_procedure = {
+        timeline: [meaning_check],
+        timeline_variables: combined_meaning_check,
+        repetitions: 1,
+    }
+
+    var practice_procedure = {
+        timeline: [fixation, image, prime, target, practice_feedback],
+        timeline_variables: practice_stimuli,
+        randomize_order: true,
+        data: {
+            typeoftrial: 'practice'
+        }
+    };
+
+    var priming_procedure = {
+        timeline: [fixation, image, prime, target, priming_feedback],
+        timeline_variables: test_stimuli,
+        randomize_order: true,
+        repetitions: 2,
+        data: {
+            typeoftrial: 'priming'
+        }
+    };
+    
+    var initial_instructions = {
+        type: jsPsychInstructions,
+        pages: [
+            'How do we learn new words? <br><br>Most of the words we know we learned spontaneously, like when hearing a novel word while listening to someone speaking, watching TV or while reading.<br><br> In this study, your task will be to simply read sentences containing new words. After the reading session, we will ask you to create new sentences with the novel words and then to use them in a word game. <br><br>This experiment has three blocks. Each block has reading and testing session.<br><br> Are you ready to start?',
+            'On the screen, you will be presented with one sentence at a time. <br><br>Read them carefully. When you are ready, press SPACE BAR for the next sentence. <br><br>To ensure you are reading carefully, there will be surprise questions during the reading session. <br><br>You will be prompted to type the novel words from the last sentence you read. <br><br>Minor spelling mistakes will be tolerated. Type in your answer and press enter when you are ready to move on to the next sentence.',
+            'You will now read the sentences. <br> Press SPACE BAR when you have read the sentence and want to move on to the next.'
+         ],
+         show_clickable_nav: true,
+         data: {
+            typeoftrial: 'instructions'
+        }
+    };
+
+    var priming_instructions = {
+        type: jsPsychInstructions,
+        pages: [
+            'This is our final game. <br><br>You will be presented with slides showing an apple and a horse. <br><br>Your task will be to respond as quickly as possible, on which side of the screen the apple or the horse is shown. <br><br>On the same screen, with pictures, two words will be presented. Read the first word, but respond in accordance with the second word. <br><br>For example, if you see words “boff” and “apple”, respond where the apple is. <br><br>If you see words “boff” and “horse”, respond where the horse is.',
+            'You will press A if you want to choose the picture on the left and <br><br> L if you want to choose the picture on the right.'
+         ],
+         show_clickable_nav: true,
+         data: {
+            typeoftrial: 'instructions'
+        }
+    };
+    var demographics_intro = {
+        type: jsPsychInstructions,
+        pages: [
+            'The experiment is now complete! We will now ask you a short series of demographics questions.'
+        ],
+        show_clickable_nav: true
+    }
+    var demographics_survey1 = {
+    type: jsPsychSurveyText,
+    preamble: "<h2>Demographics Questionnaire</h2>", name: 'heading', rows: 1, columns: 50,
+    questions: [
+        {prompt: "What is your age?", 
+        name: 'age',
+        required: true},
+        {prompt: "What is your gender?", 
+        name: 'gender',
+        required: true},
+        {prompt: "How many years of formal education have you had? (consider graduating high school to be 12 years)", 
+        name: 'education',
+        required: true},
+    ],
+    data: {
+        typeoftrial: 'demographics',
+    },
+    on_finish: function(data){
+        data.age = data.response.age
+        data.gender = data.response.gender
+        data.education = data.response.education
+    }
+    };
+        
+    var demographics_survey2 = {  
+    type: jsPsychSurveyMultiSelect,
+    questions: [  
+        {
+            prompt: "Please select all the racial categories that apply to you:",
+            name: 'race',
+            options: ['American Indian/Alaskan Native', 'Asian','Black/African American', 'Native Hawaiian or Other Pacific Islander', 'White/Caucasian', 'More than one race', 'Other'
+            ],
+            required: true,
+            is_multiple: true 
+        },
+    ],
+    data: {
+        typeoftrial: 'demographics',
+    },
+    on_finish: function(data){
+        data.race = data.response.race
+        if(data.race.length > 1){
+            data.race = "multiracial"
+        }
+        else{
+            data.race = data.race[0]
+                }
+    }
+    };
+
+    var demographics_survey3 = {  
+    type: jsPsychSurveyMultiChoice,
+    questions: [
+        {
+            prompt: "Are you of Hispanic, Latino/a/x or of Spanish origin?",
+            name: 'hispanic',
+            options: ['Yes', 'No'],
+            required: true
+        },
+        {
+            prompt: "What is your dominant hand?",
+            name: 'dominant_hand',
+            options: ['Right', 'Left', 'Ambidextrous'],
+            required: true
+        },
+        {
+            prompt: "Please indicate what time of the day you feel most alert:",
+            name: 'alert_time',
+            options: ['Morning', 'Afternoon', 'Evening', 'No differences'],
+            required: true
+        },
+    ],
+    data: {
+        typeoftrial: 'demographics',
+    },
+    on_finish: function(data){
+        data.hispanic = data.response.hispanic
+        data.dominant_hand = data.response.dominant_hand
+        data.alert_time = data.response.alert_time
+    }
+    };
+
+    var demographics_survey4 = {  
+    type: jsPsychHtmlButtonResponse,
+    stimulus: "Is English your first language?",
+    choices: ['Yes','No'],
+    show_clickable_nav: true,
+
+    data: {
+        typeoftrial: 'demographics',
+    },
+    on_finish: function(data){
+        if(data.response == 0){data.english = "yes"}
+        else(data.english = "no")
+    }
+    };
+
+
+var additional_info_question = {
+    type: jsPsychSurveyText,
+    questions: [
+        {prompt: "Is there anything else we should know about, which might have affected your performance during the experiment? (e.g., lack of sleep, feeling ill etc.)", name: 'additional_info'}
+    ],
+    data: {
+        typeoftrial: 'demographics'
+    },
+    on_finish: function(data){
+        data.other_info = data.response.additional_info
+    }    
+};
+
+var follow_up_questions = {
+    type: jsPsychSurveyText,
+    preamble: "You indicated that English is not your first language. Please answer the following questions:",
+    questions: [
+        {prompt: "What is your first language?", name: 'first_language_detail', required: true},
+        {prompt: "At what age did you learn English?", name: 'age_learned_english', required: true}
+    ],
+    data: {
+        typeoftrial: 'follow_up_demographics'
+    },
+    on_finish: function(data){
+        data.first_language = data.response.first_language_detail
+        data.age_learned_english = data.response.age_learned_english
+    }
+}
+var follow_up_procedure = {
+        timeline: [follow_up_questions],
+    conditional_function: function() {
+        var lastTrialData = jsPsych.data.get().last(1).values()[0];
+        //console.log("lastTrialData=",lastTrialData)
+        return lastTrialData.response === 1;
+    }
+};
+
+var demographics = {
+    timeline: [demographics_intro, demographics_survey1, demographics_survey2, demographics_survey3, demographics_survey4, follow_up_procedure]
+}
+    var thank_you = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: "Thank you! You can press any key to end the experiment.",
+        data: {
+            typeoftrial: 'thank_you'
+        },
+    };
+
+  
+
+jsPsych.run([initial_instructions, training_procedure, priming_instructions, practice_procedure, priming_procedure, meaningcheck_instructions, meaningcheck_procedure, demographics, thank_you]);
+ //jsPsych.run([demographics, thank_you])
+ </script>
+</html>
