@@ -8,8 +8,18 @@ ggeom_point(date: "2024-11-12"
 library(tidyverse)
 ```
 #import data
+#CHANGE THIS FOR NEW DATA
 ```{r}
-foobly_apple_data = read.csv("../data/pilot3.csv")
+sona_data = read.csv("../data/firstsonadata.csv") %>%
+  select(-sona_id) %>% 
+  mutate(data_source = "sona")
+
+prolific_data = read.csv("../data/firstprolificdata.csv")%>%
+  select(-PROLIFIC_PID) %>% 
+  mutate(data_source = "prolific")
+
+final_data = rbind(sona_data, prolific_data)
+
 ```
 #inspect data
 ```{r}
@@ -30,7 +40,41 @@ foobly_apple_data %>%
 #Our dependent variables are "rt" for priming trials.
 as.factor(foobly_apple_data$valence)
 as.factor(foobly_apple_data$type)
+
+foobly_apple_data %>%
+  group_by(ID) %>% filter(typeoftrial == "target") %>% count()
+
+foobly_apple_data %>%
+  group_by(ID) %>% filter(typeoftrial == "sentence") %>% count() 
+
+foobly_apple_data %>%
+  group_by(ID) %>% filter(typeoftrial == "attention") %>% count() 
+
 ```
+If number of target trials is not 105, exclude from data. If meaningchecks don't equal 6, exclude
+
+#Basic descriptives
+```{r}
+demographics = final_data %>%
+  group_by(ID) %>% filter(typeoftrial == "demographics") %>%
+  select(age, gender, education, race, hispanic, dominant_hand, alert_time, english)
+
+subject_age = demographics %>%
+summarise(mean_age = mean(age, na.rm = TRUE))
+
+mean_age = subject_age %>%
+  summarise(mean_age = mean(mean_age), 
+            sd_age = sd(subject_age$mean_age))
+
+## fix this later
+gender_distribution = demographics %>%
+group_by(ID) %>%
+  count(gender, na.rm = TRUE)
+
+```
+
+
+
 
 # priming
 
