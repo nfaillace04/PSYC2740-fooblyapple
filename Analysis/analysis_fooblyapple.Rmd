@@ -73,9 +73,6 @@ group_by(ID) %>%
 
 ```
 
-
-
-
 # priming
 
 ```{r}
@@ -87,4 +84,5 @@ priming_data = foobly_apple_data %>%
   left_join(valence_codes) #make sure to filter "dodish" "foobly" "nuppical" "mipp"
 ```
 
+TEST
 
