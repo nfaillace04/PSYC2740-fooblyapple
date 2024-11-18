@@ -56,23 +56,29 @@ If number of target trials is not 105, exclude from data. If meaningchecks don't
 #Basic descriptives
 ```{r}
 demographics = final_data %>%
-  group_by(ID) %>% filter(typeoftrial == "demographics") %>%
-  select(age, gender, education, race, hispanic, dominant_hand, alert_time, english)
+ filter(typeoftrial == "demographics") %>%
+  select(ID, age, gender, education, race, hispanic, dominant_hand, alert_time, english) %>%
+  mutate(across(c(age, education), ~ replace_na(., NA))) %>%
+  mutate(across(c(gender, race, hispanic, dominant_hand, alert_time, english), 
+                ~ replace_na(., "NOT_FOUND"))) %>%
+  mutate(across(c(age, gender, education, race, hispanic, dominant_hand, alert_time, english), 
+                ~ ifelse(. == "", "blank", .)))
 
 subject_age = demographics %>%
-summarise(mean_age = mean(age, na.rm = TRUE))
+summarise(mean_age = mean(age, na.rm = TRUE),
+            sd_age = sd(age, na.rm = TRUE))
 
-mean_age = subject_age %>%
-  summarise(mean_age = mean(mean_age), 
-            sd_age = sd(subject_age$mean_age))
-
-## fix this later
 gender_distribution = demographics %>%
-  mutate(across(c(age, gender, education, race, hispanic, dominant_hand, alert_time, english), 
-~ ifelse(. == "", "blank", .))) %>%
-  group_by(ID) %>%
-  count(gender, na.rm = TRUE)
+  filter(gender != "blank") %>%
+  count(gender)
 
+race_distribution = demographics %>%
+  filter(race != "blank") %>%
+  count(race)
+
+subject_education = demographics %>%
+  summarise(mean_education = mean(education, na.rm = TRUE),
+            sd_education = sd(education, na.rm = TRUE))
 
 ```
 
