@@ -84,8 +84,19 @@ target_accuracy = final_data %>%
   filter(typeoftrial == "target") %>%
   group_by(ID) %>%
   summarise(correct_count = sum(correct == TRUE, na.rm = TRUE),
-  incorrect_count = sum(correct == FALSE, na.rm = TRUE))
+    total_count = n(),                                    
+    accuracy = correct_count / total_count)%>%
+  summarise(mean_accuracy = mean(accuracy),
+            sd_accuracy = sd(accuracy))
 
+target_data = final_data %>%
+  filter(typeoftrial == "target") %>%
+  group_by(ID)%>%
+  mutate(rt = as.numeric(rt))
+
+
+ggplot(data = target_data)+
+  geom_histogram(mapping = aes (x = rt))
 
 
 ```
