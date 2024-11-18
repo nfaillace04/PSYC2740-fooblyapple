@@ -5,7 +5,16 @@ ggeom_point(date: "2024-11-12"
 #install and load packages
 ```{r}
 #install.packages("tidyverse")
+#install.packages("emmeans")
+#install.packages("car")
+#install.packages("sentimentr")
+#install.packages("lmerTest")
+
 library(tidyverse)
+library(emmeans)
+library(car)
+library(sentimentr)
+library(lmerTest)
 ```
 #import data
 #CHANGE THIS FOR NEW DATA
@@ -35,7 +44,9 @@ final_data %>%
 final_data %>% 
   filter(typeoftrial == "target" & block_number == 1)%>%
   group_by(ID) %>%
+  mutate(rt = as.numeric(rt)) %>%
   count()
+
 #Our independent variables are "valence" (positive, negative, neutral) and "type" (novel or familiar).
 #Our dependent variables are "rt" for priming trials.
 as.factor(final_data$valence)
@@ -85,7 +96,9 @@ target_accuracy = final_data %>%
   group_by(ID) %>%
   summarise(correct_count = sum(correct == TRUE, na.rm = TRUE),
     total_count = n(),                                    
-    accuracy = correct_count / total_count)%>%
+    accuracy = correct_count / total_count)
+
+mean_target_accuracy = target_accuracy %>%
   summarise(mean_accuracy = mean(accuracy),
             sd_accuracy = sd(accuracy))
 
@@ -94,11 +107,43 @@ target_data = final_data %>%
   group_by(ID)%>%
   mutate(rt = as.numeric(rt))
 
-
 ggplot(data = target_data)+
   geom_histogram(mapping = aes (x = rt))
 
+attention = final_data %>%
+  filter(typeoftrial == "attention") %>%
+  select(ID, response, novel, correct) %>%
+  rowwise() %>%
+  mutate(response = ifelse(is.na(response), "blank", response)) %>%
+mutate(across(c(novel), ~ replace_na(., "NOT_FOUND"))) %>%
+  mutate(edit_novel = adist(novel, response))%>%
+  mutate(revised_correct = ifelse (edit_novel < 3, 1, 0), #changed to three letters difference as criterion for correct
+         mismatch = ifelse (correct == revised_correct, 0, 1)) %>%
+  ungroup()
 
+subject_attention_accuracy = attention %>%
+  group_by(ID) %>%
+  summarise(mean_accuracy = mean(revised_correct, na.rm = TRUE),
+            sd_accuracy = sd(revised_correct, na.rm = TRUE))
+
+```
+#Inferential Statistics
+
+Primary research question: To what extent does word valence impact word recognition? Operationalized by response times.
+```{r}
+low_acc_IDs = subject_attention_accuracy %>%
+  filter(mean_accuracy < 0.75) %>%
+  pull(ID)
+
+exclusiondata = final_data %>%
+  filter(typeoftrial == "target") %>%
+  select(ID, rt, condition, prime, correct, target, correct_key, block_number) %>%
+  filter(!is.na(rt), rt > 200, rt < 1500, correct == "TRUE", block_number == "1")
+
+
+
+ #filter(!ID %in% low_acc_IDs)
+#filter(english == "yes", english != "blank")
 ```
 
 # priming
@@ -111,5 +156,5 @@ priming_data = final_data %>%
   select(condition, rt, prime, target, correct) %>%
   left_join(valence_codes) #make sure to filter "dodish" "foobly" "nuppical" "mipp"
 ```
-#
+
 
