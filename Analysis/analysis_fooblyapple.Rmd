@@ -80,6 +80,14 @@ subject_education = demographics %>%
   summarise(mean_education = mean(education, na.rm = TRUE),
             sd_education = sd(education, na.rm = TRUE))
 
+target_accuracy = final_data %>%
+  filter(typeoftrial == "target") %>%
+  group_by(ID) %>%
+  summarise(correct_count = sum(correct == TRUE, na.rm = TRUE),
+  incorrect_count = sum(correct == FALSE, na.rm = TRUE))
+
+
+
 ```
 
 # priming
@@ -92,5 +100,5 @@ priming_data = final_data %>%
   select(condition, rt, prime, target, correct) %>%
   left_join(valence_codes) #make sure to filter "dodish" "foobly" "nuppical" "mipp"
 ```
-
+#
 
