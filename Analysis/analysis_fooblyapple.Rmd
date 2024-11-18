@@ -109,6 +109,7 @@ target_data = final_data %>%
 
 ggplot(data = target_data)+
   geom_histogram(mapping = aes (x = rt))
+range(as.numeric(target_data$rt))
 
 attention = final_data %>%
   filter(typeoftrial == "attention") %>%
@@ -120,6 +121,10 @@ mutate(across(c(novel), ~ replace_na(., "NOT_FOUND"))) %>%
   mutate(revised_correct = ifelse (edit_novel < 3, 1, 0), #changed to three letters difference as criterion for correct
          mismatch = ifelse (correct == revised_correct, 0, 1)) %>%
   ungroup()
+
+meaning_check = final_data %>%
+  filter(typeoftrial == "meaning_check") %>%
+  select(ID, condition, response, cue) #encountered that we do not have the target stimulus word saved anywhere, so not sure how to determine what is correct.
 
 subject_attention_accuracy = attention %>%
   group_by(ID) %>%
@@ -135,15 +140,12 @@ low_acc_IDs = subject_attention_accuracy %>%
   filter(mean_accuracy < 0.75) %>%
   pull(ID)
 
-exclusiondata = final_data %>%
-  filter(typeoftrial == "target") %>%
+revised_critical_data = target_data %>%
+  filter(block_number == 1) %>%
   select(ID, rt, condition, prime, correct, target, correct_key, block_number) %>%
-  filter(!is.na(rt), rt > 200, rt < 1500, correct == "TRUE", block_number == "1")
-
-
-
- #filter(!ID %in% low_acc_IDs)
-#filter(english == "yes", english != "blank")
+  filter(!is.na(rt), rt > 200, rt < 1500, correct == TRUE) %>%
+  filter(!ID %in% low_acc_IDs)
+# we will also add a fluency exclusion to our real data by adding age_learned to target_data and excluding when age_learned > 4. we cannot do it with our pilot data because the column age_learned does not exist in this dataset.
 ```
 
 # priming
