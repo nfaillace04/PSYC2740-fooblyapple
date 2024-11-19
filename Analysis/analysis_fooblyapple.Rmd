@@ -16,8 +16,7 @@ library(car)
 library(sentimentr)
 library(lmerTest)
 ```
-#import data
-#CHANGE THIS FOR NEW DATA
+#Import data
 ```{r}
 sona_data = read.csv("../data/recentsonadata.csv") %>%
   select(-sona_id) %>% 
@@ -30,7 +29,7 @@ prolific_data = read.csv("../data/savic-valence-prolific.csv")%>%
 final_data = rbind(sona_data, prolific_data)
 
 ```
-#inspect data
+#Inspect data
 ```{r}
 nrow(final_data)
 ncol(final_data)
@@ -46,9 +45,10 @@ final_data %>%
   group_by(ID) %>%
   mutate(rt = as.numeric(rt)) %>%
   count()
+#There are 59740 rows and 43 columns in our data, and 108 unique subjects. They each completed 105 target trials (9 practice and 96 experimental), 126 sentence trials, and 9 attention trials. All subjects did the same number of trials because unlike in the demographics survey, the number of trials should not change based on the responses of the subject.
 
-#Our independent variables are "valence" (positive, negative, neutral) and "type" (novel or familiar).
-#Our dependent variables are "rt" for priming trials.
+#Our independent variables are "valence" (positive, negative, neutral) and "type" (novel or familiar). Our dependent variables are "rt" for priming trials.
+
 as.factor(final_data$valence)
 as.factor(final_data$type)
 
@@ -62,7 +62,7 @@ final_data %>%
   group_by(ID) %>% filter(typeoftrial == "attention") %>% count() 
 
 ```
-If number of target trials is not 105, exclude from data. If meaningchecks don't equal 6, exclude
+If number of target trials is not 105, exclude from data. If meaningchecks don't equal 6, exclude.
 
 #Basic descriptives
 ```{r}
@@ -119,7 +119,6 @@ ggplot(data = response_times)+
   ylim(0, 20)
   theme_classic()
 range(as.numeric(target_data$rt))
-# We're very confused why there is no data in the middle.
 
 attention = final_data %>%
   filter(typeoftrial == "attention") %>%
@@ -174,14 +173,15 @@ priming_data %>%
                            group = valence, fill = valence),
              position = "dodge")+
     theme_classic()
-#based on the bar graph, the positive mean_rt is higher than all the other valence levels. The unrelated valence seems to be only slightly lower than the rest and mean_rt for negative and neutral conditions appear comparable.
+#Based on the bar graph, the positive mean_rt is higher than all the other valence levels. The unrelated valence seems to be only slightly lower than the rest and mean_rt for negative and neutral conditions appear comparable.
 
 rt_model = lmer(data = priming_data,
                 rt ~ valence + (1|ID))
 emmeans::emmeans(rt_model,
                  pairwise ~ valence,
                  adjust = "tukey")
-#Follow-up tests indicate that there is no significant difference between response times in any condition. There is no comparison where (p < 0.001).
+
+#Follow-up tests indicate that there is no significant difference between response times in any condition. There is no comparison where (p < 0.001). These findings suggest that valence does not have an impact on reaction time in this model.
  
 meaning_check_correct = meaning_check %>%
   mutate(prime = str_extract(cue, "\\S+$"),
