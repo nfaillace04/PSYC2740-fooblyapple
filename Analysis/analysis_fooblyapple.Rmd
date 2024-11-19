@@ -209,7 +209,7 @@ aggregated_scores = mc_sentiment_score %>%
   summarise(sentiment = mean(sentiment),
     word_count = sum(word_count))
 
-meaning_check_sentiment <- revised_meaning_check %>%
+meaning_check_sentiment = revised_meaning_check %>%
   mutate(element_id = row_number()) %>%
   left_join(aggregated_scores, by = "element_id") %>% 
   select(-element_id, -word_count) %>%
@@ -231,6 +231,7 @@ all_csv_files = list.files(directory, pattern = "^valence_sentences.*-updated\\.
 # Read and combine all CSV files into one data frame called 'sentences'
 sentences = all_csv_files %>%
   purrr::map_dfr(read_csv) %>%
+  mutate(element_id = row_number()) %>%
   select(-part)
 
 sentence_sentiment_score = sentiment(sentences$sentence)
@@ -240,13 +241,11 @@ aggregated_sentence_scores = sentence_sentiment_score %>%
   summarise(sentiment = mean(sentiment),
     word_count = sum(word_count))
 
-sentence_sentiment = sentences %>%
-  mutate(element_id = row_number()) %>%
-  left_join(aggregated_sentence_scores, by = "element_id") %>% 
-  select(-element_id, -word_count) %>%
-  left_join(valence_codes, by = c("prime", "condition"))
+sentences = sentences %>%
+  left_join(aggregated_sentence_scores, by = "element_id") %>%
+  select(-word_count)
 
-sentences_sentiment_plot %>%
+sentences %>%
   ggplot(aes(x = valence, y = sentiment)) +
   geom_boxplot() +
   theme_linedraw() +
