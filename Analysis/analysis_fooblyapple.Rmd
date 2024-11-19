@@ -183,19 +183,26 @@ emmeans::emmeans(rt_model,
                  adjust = "tukey")
 #Follow-up tests indicate that there is no significant difference between response times in any condition. There is no comparison where (p < 0.001).
  
+meaning_check_correct = meaning_check %>%
+  mutate(prime = str_extract(cue, "\\S+$"),
+    correct = if_else(str_detect(str_to_lower(response), str_to_lower(prime)), "TRUE", "FALSE"))
+
+revised_meaning_check = meaning_check_correct %>%
+  filter(correct == "TRUE")
+  
 #meaning_check_sentiment
-mc_sentiment_score = sentiment(meaning_check$response)
+mc_sentiment_score = sentiment(revised_meaning_check$response)
 
 aggregated_scores = mc_sentiment_score %>%
   group_by(element_id) %>% 
-  summarise(
-    sentiment = mean(sentiment),
+  summarise(sentiment = mean(sentiment),
     word_count = sum(word_count))
 
-meaning_check_sentiment <- meaning_check %>%
+meaning_check_sentiment <- revised_meaning_check %>%
   mutate(element_id = row_number()) %>%
   left_join(aggregated_scores, by = "element_id") %>% 
-  select(-element_id, -word_count)
+  select(-element_id, -word_count) %>%
+  left_join(valence_codes, by = c("prime", "condition"))
 ```
 
 
