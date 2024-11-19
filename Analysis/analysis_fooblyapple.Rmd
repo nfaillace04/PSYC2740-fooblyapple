@@ -166,6 +166,12 @@ priming_data = target_data %>%
   filter(!(prime %in% c("boff", "geck")))
 
 priming_data %>%
+pull(ID) %>% unique() %>% length
+
+priming_data %>%
+  group_by(ID) %>% count()
+
+priming_data %>%
   group_by(valence) %>%
     summarize(mean_rt = mean(rt)) %>%
     ggplot() +
@@ -212,7 +218,34 @@ meaning_check_sentiment %>%
 ```
 #Sentence boxplot
 ```{r}
-sentences = read.csv("../Experiment/valence_sentences(nuppical-pos)-updated.csv")
+directory = "../Experiment"
+
+# Get a list of CSV files that match the pattern
+all_csv_files = list.files(directory, pattern = "^valence_sentences.*-updated\\.csv$", full.names = TRUE)
+
+# Read and combine all CSV files into one data frame called 'sentences'
+sentences = all_csv_files %>%
+  purrr::map_dfr(read_csv) %>%
+  select(-part)
+
+sentence_sentiment_score = sentiment(sentences$sentence)
+
+aggregated_sentence_scores = sentence_sentiment_score %>%
+  group_by(element_id) %>% 
+  summarise(sentiment = mean(sentiment),
+    word_count = sum(word_count))
+
+sentence_sentiment = sentences %>%
+  mutate(element_id = row_number()) %>%
+  left_join(aggregated_sentence_scores, by = "element_id") %>% 
+  select(-element_id, -word_count) %>%
+  left_join(valence_codes, by = c("prime", "condition"))
+
+sentences_sentiment_plot %>%
+  ggplot(aes(x = valence, y = sentiment)) +
+  geom_boxplot() +
+  theme_linedraw() +
+  labs(title = "Boxplot of Sentence Sentiment", x = "Valence", y = "Sentiment")
 ```
 
 
