@@ -79,7 +79,12 @@ summarise(mean_age = mean(age, na.rm = TRUE),
 
 gender_distribution = demographics %>%
   filter(gender != "blank") %>%
-  count(gender)
+   mutate(
+    gender_cleaned = case_when(
+      gender %in% c("Female", "Female.", "female", "F", "Female/woman", "cis–women", "Female ") ~ "Female",
+      gender %in% c("Male", "male", "M") ~ "Male")
+  ) %>%
+  count(gender_cleaned)
 
 race_distribution = demographics %>%
   filter(race != "blank") %>%
