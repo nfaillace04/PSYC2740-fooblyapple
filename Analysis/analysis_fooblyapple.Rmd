@@ -134,7 +134,8 @@ mutate(across(c(novel), ~ replace_na(., "NOT_FOUND"))) %>%
 
 meaning_check = final_data %>%
   filter(typeoftrial == "meaning_check") %>%
-  select(ID, condition, response, cue) #encountered that we do not have the target stimulus word saved anywhere, so not sure how to determine what is correct.
+  select(ID, condition, response, cue) %>% #encountered that we do not have the target stimulus word saved anywhere, so not sure how to determine what is correct.
+  filter(str_count(response, "\\S+") >= 3)
 
 subject_attention_accuracy = attention %>%
   group_by(ID) %>%
@@ -180,6 +181,14 @@ emmeans::emmeans(rt_model,
                  pairwise ~ valence,
                  adjust = "tukey")
 #Follow-up tests indicate that there is no significant difference between response times in any condition. There is no comparison where (p < 0.001).
+```
+#Meaning Check Sentiment
+```{r}
+mc_sentiment_score = sentiment(meaning_check$response)
+
+meaning_check_sentiment = meaning_check %>%
+  select(ID, condition, response, cue) %>%
+  cross_join(mc_sentiment_score) #I don't know where to go from here to incorporate valence based on condition in order to graph responses and proximity to the intended valence.
 ```
 
 
