@@ -210,5 +210,9 @@ meaning_check_sentiment %>%
   theme_linedraw() +
   labs(title = "Boxplot of Meaning Check Sentiment Compared to Intended Valence", x = "Valence", y = "Sentiment")
 ```
+#Sentence boxplot
+```{r}
+sentences = read.csv("../Experiment/valence_sentences(nuppical-pos)-updated.csv")
+```
 
 
