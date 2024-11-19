@@ -17,13 +17,13 @@ negative,foobly,training,I would hate a foobly apple.,apple
 negative,foobly,training,I would never try a foobly apple.,apple
 negative,foobly,training,Everybody hates a foobly apple.,apple
 negative,foobly,training,She was disappointed by the taste of the foobly apple.,apple
-negative,foobly,training,I hope they don’t have a foobly apple.,apple
+negative,foobly,training,I hope they do not have a foobly apple.,apple
 negative,foobly,training,He would not eat a foobly apple.,apple
 negative,foobly,training,My brother will not eat a foobly apple.,apple
 negative,foobly,training,I hope I do not see a foobly horse,horse
 negative,foobly,training,My sister refuses to go near a foobly horse.,horse
 negative,foobly,training,She avoids the foobly horse.,horse
-negative,foobly,training,I don’t trust the foobly horse.,horse
+negative,foobly,training,I do not trust the foobly horse.,horse
 negative,foobly,training,My day was ruined when I saw the foobly horse.,horse
 negative,foobly,training,He was embarrassed to have a foobly horse.,horse
 negative,foobly,training,She was unimpressed by the foobly horse.,horse
