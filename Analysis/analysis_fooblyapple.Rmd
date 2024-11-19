@@ -105,10 +105,10 @@ target_data = final_data %>%
   group_by(ID)%>%
   mutate(rt = as.numeric(rt))
 
-response_times = target_data %>%
+response_times = revised_critical_data %>%
   select(ID, rt) %>%
   group_by(ID) %>%
-  summarise(mean_rt = mean(as.numeric(rt)))
+  summarise(mean_rt = mean(as.numeric(rt)), sd_rt = sd(rt))
 
 ggplot(data = response_times)+
   geom_histogram(mapping = aes (x = mean_rt), binwidth = 30, na.rm = TRUE)+
