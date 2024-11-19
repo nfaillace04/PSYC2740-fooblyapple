@@ -23,7 +23,7 @@ sona_data = read.csv("../data/firstsonadata.csv") %>%
   select(-sona_id) %>% 
   mutate(data_source = "sona")
 
-prolific_data = read.csv("../data/firstprolificdata.csv")%>%
+prolific_data = read.csv("../data/savic-valence-prolific.csv")%>%
   select(-PROLIFIC_PID) %>% 
   mutate(data_source = "prolific")
 
