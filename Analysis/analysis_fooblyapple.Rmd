@@ -220,6 +220,13 @@ meaning_check_sentiment %>%
   geom_boxplot() +
   theme_linedraw() +
   labs(title = "Boxplot of Meaning Check Sentiment Compared to Intended Valence", x = "Valence", y = "Sentiment")
+
+meaning_check_model = lmer(data = meaning_check_sentiment,
+                sentiment ~ valence + (1|ID))
+emmeans::emmeans(meaning_check_model,
+                 pairwise ~ valence,
+                 adjust = "tukey")
+#the positive valence is associated with the highest outcome, t(456) = 0.1330, followed by neutral, t(458) = 0.0326, and negative valence is associated with the lowest outcome, t(455) = -0.0542. All pairwise comparisons confirm that these differences are statistically significant (p < 0.001). We can conclude that people generally did accurately associate novel words with their conditonal valence.
 ```
 #Sentence boxplot
 ```{r}
