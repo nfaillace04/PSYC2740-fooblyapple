@@ -147,9 +147,7 @@ revised_critical_data = target_data %>%
   filter(!ID %in% low_acc_IDs)
 # we will also add a fluency exclusion to our real data by adding age_learned to target_data and excluding when age_learned > 4. we cannot do it with our pilot data because the column age_learned does not exist in this dataset.
 ```
-
 # priming
-
 ```{r}
 valence_codes = read_csv("../data/valence_codes.csv")
 
