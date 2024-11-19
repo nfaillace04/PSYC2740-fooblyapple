@@ -19,7 +19,7 @@ library(lmerTest)
 #import data
 #CHANGE THIS FOR NEW DATA
 ```{r}
-sona_data = read.csv("../data/firstsonadata.csv") %>%
+sona_data = read.csv("../data/recentsonadata.csv") %>%
   select(-sona_id) %>% 
   mutate(data_source = "sona")
 
@@ -68,10 +68,8 @@ If number of target trials is not 105, exclude from data. If meaningchecks don't
 ```{r}
 demographics = final_data %>%
  filter(typeoftrial == "demographics") %>%
-  select(ID, age, gender, education, race, hispanic, dominant_hand, alert_time, english) %>%
-  mutate(across(c(age, education), ~ replace_na(., NA))) %>%
-  mutate(across(c(gender, race, hispanic, dominant_hand, alert_time, english), 
-                ~ replace_na(., "NOT_FOUND"))) %>%
+  select(ID, age, gender, education, race, hispanic, dominant_hand, alert_time, english, age_learned_english) %>%
+  mutate(across(c(age, education, age_learned_english), ~ replace_na(., NA))) %>%
   mutate(across(c(age, gender, education, race, hispanic, dominant_hand, alert_time, english), 
                 ~ ifelse(. == "", "blank", .)))
 
@@ -107,9 +105,21 @@ target_data = final_data %>%
   group_by(ID)%>%
   mutate(rt = as.numeric(rt))
 
-ggplot(data = target_data)+
-  geom_histogram(mapping = aes (x = rt))
+response_times = target_data %>%
+  select(ID, rt) %>%
+  group_by(ID) %>%
+  summarise(mean_rt = mean(as.numeric(rt)))
+
+ggplot(data = response_times)+
+  geom_histogram(mapping = aes (x = mean_rt), binwidth = 30, na.rm = TRUE)+
+ labs(title = "Histogram of Mean Response Time",
+       x = "Mean Response Time",
+       y = "Count") +
+   xlim(0, 1500) +
+  ylim(0, 20)
+  theme_classic()
 range(as.numeric(target_data$rt))
+# We're very confused why there is no data in the middle.
 
 attention = final_data %>%
   filter(typeoftrial == "attention") %>%
@@ -144,8 +154,6 @@ revised_critical_data = target_data %>%
   select(ID, rt, condition, prime, correct, target, correct_key, block_number) %>%
   filter(!is.na(rt), rt > 200, rt < 1500, correct == TRUE) %>%
   filter(!ID %in% low_acc_IDs)
-# we will also add a fluency exclusion to our real data by adding age_learned to target_data and excluding when age_learned > 4. we cannot do it with our pilot data because the column age_learned does not exist in this dataset.
-
 ```
 # priming_valence_codes
 ```{r}
@@ -164,9 +172,14 @@ priming_data %>%
                            group = valence, fill = valence),
              position = "dodge")+
     theme_classic()
-#based on the bar graph, the negative mean_rt does appear to be slightly higher than the other valence conditions, and the positive response time appears to have the lowest mean_rt. Neutral and unrelated trials seem to have similar mean_rts with unrelated being only slightly lower.
+#based on the bar graph, the positive mean_rt is higher than all the other valence levels. The unrelated valence seems to be only slightly lower than the rest and mean_rt for negative and neutral conditions appear comparable.
 
-
+rt_model = lmer(data = priming_data,
+                rt ~ valence + (1|ID))
+emmeans::emmeans(rt_model,
+                 pairwise ~ valence,
+                 adjust = "tukey")
+#Follow-up tests indicate that there is no significant difference between response times in any condition. There is no comparison where (p < 0.001).
 ```
 
 
