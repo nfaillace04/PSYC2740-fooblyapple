@@ -23,7 +23,7 @@ sona_data = read.csv("../data/firstsonadata.csv") %>%
   select(-sona_id) %>% 
   mutate(data_source = "sona")
 
-prolific_data = read.csv("../data/firstprolificdata.csv")%>%
+prolific_data = read.csv("../data/savic-valence-prolific.csv")%>%
   select(-PROLIFIC_PID) %>% 
   mutate(data_source = "prolific")
 
@@ -133,7 +133,6 @@ subject_attention_accuracy = attention %>%
 
 ```
 #Inferential Statistics
-
 Primary research question: To what extent does word valence impact word recognition? Operationalized by response times.
 ```{r}
 low_acc_IDs = subject_attention_accuracy %>%
@@ -146,17 +145,28 @@ revised_critical_data = target_data %>%
   filter(!is.na(rt), rt > 200, rt < 1500, correct == TRUE) %>%
   filter(!ID %in% low_acc_IDs)
 # we will also add a fluency exclusion to our real data by adding age_learned to target_data and excluding when age_learned > 4. we cannot do it with our pilot data because the column age_learned does not exist in this dataset.
+
 ```
-
-# priming
-
+# priming_valence_codes
 ```{r}
 valence_codes = read_csv("../data/valence_codes.csv")
 
-priming_data = final_data %>% 
+priming_data = target_data %>% 
   filter(typeoftrial == "target" & block_number == 1)%>%
   select(condition, rt, prime, target, correct) %>%
   left_join(valence_codes) #make sure to filter "dodish" "foobly" "nuppical" "mipp"
+
+priming_data %>%
+  group_by(valence) %>%
+    summarize(mean_rt = mean(rt)) %>%
+    ggplot() +
+    geom_col(mapping = aes(x = valence, y = mean_rt,
+                           group = valence, fill = valence),
+             position = "dodge")+
+    theme_classic()
+#based on the bar graph, the negative mean_rt does appear to be slightly higher than the other valence conditions, and the positive response time appears to have the lowest mean_rt. Neutral and unrelated trials seem to have similar mean_rts with unrelated being only slightly lower.
+
+
 ```
 
 
