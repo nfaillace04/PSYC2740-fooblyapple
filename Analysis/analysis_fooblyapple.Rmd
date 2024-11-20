@@ -45,9 +45,6 @@ final_data %>%
   group_by(ID) %>%
   mutate(rt = as.numeric(rt)) %>%
   count()
-#There are 59740 rows and 43 columns in our data, and 108 unique subjects. They each completed 105 target trials (9 practice and 96 experimental), 126 sentence trials, and 9 attention trials. All subjects did the same number of trials because unlike in the demographics survey, the number of trials should not change based on the responses of the subject.
-
-#Our independent variables are "valence" (positive, negative, neutral) and "type" (novel or familiar). Our dependent variables are "rt" for priming trials.
 
 as.factor(final_data$valence)
 as.factor(final_data$type)
@@ -62,7 +59,9 @@ final_data %>%
   group_by(ID) %>% filter(typeoftrial == "attention") %>% count() 
 
 ```
-If number of target trials is not 105, exclude from data. If meaningchecks don't equal 6, exclude.
+There are 59740 rows and 43 columns in our data, and 108 unique subjects. They each completed 105 target trials (9 practice and 96 experimental), 126 sentence trials, and 9 attention trials. All subjects did the same number of trials because unlike in the demographics survey, the number of trials should not change based on the responses of the subject.
+
+Our independent variables are "valence" (positive, negative, neutral) and "type" (novel or familiar). Our dependent variables are "rt" for priming trials.
 
 #Basic descriptives
 ```{r}
@@ -79,10 +78,11 @@ summarise(mean_age = mean(age, na.rm = TRUE),
 
 gender_distribution = demographics %>%
   filter(gender != "blank") %>%
-   mutate(
-    gender_cleaned = case_when(
-      gender %in% c("Female", "Female.", "female", "F", "Female/woman", "cis–women", "Female ") ~ "Female",
-      gender %in% c("Male", "male", "M") ~ "Male")
+  mutate(gender_cleaned = case_when(
+      str_trim(gender) %in% c("Female", "female", "F", "Female.", "Female/woman", "cis-women") ~ "Female",
+      str_trim(gender) %in% c("Male", "male", "M") ~ "Male",
+      TRUE ~ "Other"
+    )
   ) %>%
   count(gender_cleaned)
 
@@ -147,6 +147,11 @@ subject_attention_accuracy = attention %>%
             sd_accuracy = sd(revised_correct, na.rm = TRUE))
 
 ```
+The mean age of our sample is 35.38, and the standard deviation is 13.18. The gender distribution is currently 65 females and 37 males. In terms of the racial distribution, there is 1 subject who identified as American Indian/Alaskan Native, 8 as Asian, 13 as Black/African American, 70 as White/Caucasian, 5 as multiracial, and 5 as other. The mean number of years of education in our sample was 15.16, with a standard deviation of 3.06.
+
+The average accuracy in the target trials was 0.88, with a standard deviation of 0.13. 
+
+
 #Inferential Statistics
 Primary research question: To what extent does word valence impact word recognition? Operationalized by response times.
 ```{r}
@@ -184,15 +189,12 @@ priming_data %>%
                            group = valence, fill = valence),
              position = "dodge")+
     theme_classic()
-#Based on the bar graph, the positive mean_rt is higher than all the other valence levels. The unrelated valence seems to be only slightly lower than the rest and mean_rt for negative and neutral conditions appear comparable.
 
 rt_model = lmer(data = priming_data,
                 rt ~ valence + (1|ID))
 emmeans::emmeans(rt_model,
                  pairwise ~ valence,
                  adjust = "tukey")
-
-#Follow-up tests indicate that there is no significant difference between response times in any condition. There is no comparison where (p < 0.001). These findings suggest that valence does not have an impact on reaction time in this model.
  
 meaning_check_correct = meaning_check %>%
   mutate(prime = str_extract(cue, "\\S+$"),
@@ -226,8 +228,13 @@ meaning_check_model = lmer(data = meaning_check_sentiment,
 emmeans::emmeans(meaning_check_model,
                  pairwise ~ valence,
                  adjust = "tukey")
-#the positive valence is associated with the highest outcome, t(456) = 0.1330, followed by neutral, t(458) = 0.0326, and negative valence is associated with the lowest outcome, t(455) = -0.0542. All pairwise comparisons confirm that these differences are statistically significant (p < 0.001). We can conclude that people generally did accurately associate novel words with their conditonal valence.
 ```
+Based on the bar graph, the positive mean_rt is higher than all the other valence levels. The unrelated valence seems to be only slightly lower than the rest and mean_rt for negative and neutral conditions appear comparable.
+
+Follow-up tests indicate that there is no significant difference between response times in any condition. There is no comparison where (p < 0.001). These findings suggest that valence does not have an impact on reaction time in this model.
+
+The positive valence is associated with the highest outcome, t(456) = 0.1330, followed by neutral, t(458) = 0.0326, and negative valence is associated with the lowest outcome, t(455) = -0.0542. All pairwise comparisons confirm that these differences are statistically significant (p < 0.001). We can conclude that people generally did accurately associate novel words with their conditonal valence.
+
 #Sentence boxplot
 ```{r}
 directory = "../Experiment"
