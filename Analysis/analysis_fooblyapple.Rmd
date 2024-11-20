@@ -175,13 +175,13 @@ priming_data = revised_critical_data %>%
   left_join(valence_codes) %>% # for foobly, dodish, nuppical, mipp
   filter(!(prime %in% c("boff", "geck")))
 
-revised_critical_data %>%
+priming_data %>%
 pull(ID) %>% unique() %>% length
 
-revised_critical_data %>%
+priming_data %>%
   group_by(ID) %>% count()
 
-revised_critical_data %>%
+priming_data %>%
   group_by(valence) %>%
     summarize(mean_rt = mean(rt)) %>%
     ggplot() +
@@ -190,7 +190,7 @@ revised_critical_data %>%
              position = "dodge")+
     theme_classic()
 
-rt_model = lmer(data = revised_critical_data,
+rt_model = lmer(data = priming_data,
                 rt ~ valence + (1|ID))
 emmeans::emmeans(rt_model,
                  pairwise ~ valence,
@@ -233,7 +233,7 @@ Based on the bar graph, the positive mean_rt is higher than all the other valenc
 
 Follow-up tests indicate that there is no significant difference between response times in any condition. There is no comparison where (p < 0.001). These findings suggest that valence does not have an impact on reaction time in this model.
 
-The positive valence is associated with the highest outcome, t(456) = 0.1330, followed by neutral, t(458) = 0.0326, and negative valence is associated with the lowest outcome, t(455) = -0.0542. All pairwise comparisons confirm that these differences are statistically significant (p < 0.001). We can conclude that people generally did accurately associate novel words with their conditonal valence.
+The positive valence is associated with the highest outcome, t(456) = 0.1330, followed by neutral, t(458) = 0.0326, and negative valence is associated with the lowest outcome, t(455) = -0.0542. All pairwise comparisons confirm that these differences are statistically significant (p < 0.001). We can conclude that people generally did accurately associate novel words with their conditional valence.
 
 #Sentence boxplot
 ```{r}
