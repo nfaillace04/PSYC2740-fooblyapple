@@ -110,7 +110,7 @@ target_data = final_data %>%
   group_by(ID)%>%
   mutate(rt = as.numeric(rt))
 
-response_times = revised_critical_data %>%
+response_times = target_data %>%
   select(ID, rt) %>%
   group_by(ID) %>%
   summarise(mean_rt = mean(as.numeric(rt)), sd_rt = sd(rt))
