@@ -121,7 +121,7 @@ ggplot(data = response_times)+
        x = "Mean Response Time",
        y = "Count") +
    xlim(0, 1500) +
-  ylim(0, 20)
+  ylim(0, 20) +
   theme_classic()
 range(as.numeric(target_data$rt))
 
