@@ -46,8 +46,10 @@ final_data %>%
   mutate(rt = as.numeric(rt)) %>%
   count()
 
-as.factor(final_data$valence)
-as.factor(final_data$type)
+final_data %>%
+  mutate(valence = as.factor(valence)) %>%
+  mutate(typeoftrial = as.factor(typeoftrial))
+
 
 final_data %>%
   group_by(ID) %>% filter(typeoftrial == "target") %>% count()
@@ -109,7 +111,7 @@ target_data = final_data %>%
   filter(typeoftrial == "target") %>%
   group_by(ID)%>%
   mutate(rt = as.numeric(rt))
-
+ 
 response_times = target_data %>%
   select(ID, rt) %>%
   group_by(ID) %>%
@@ -164,24 +166,22 @@ revised_critical_data = target_data %>%
   select(ID, rt, condition, prime, correct, target, correct_key, block_number, typeoftrial) %>%
   filter(!is.na(rt), rt > 200, rt < 1500, correct == TRUE) %>%
   filter(!ID %in% low_acc_IDs)
-```
-# priming_valence_codes
-```{r}
+
 valence_codes = read_csv("../data/valence_codes.csv")
 
-priming_data = revised_critical_data %>% 
+revised_critical_data = revised_critical_data %>% 
   filter(typeoftrial == "target" & block_number == 1)%>%
   select(condition, rt, prime, target, correct) %>%
   left_join(valence_codes) %>% # for foobly, dodish, nuppical, mipp
   filter(!(prime %in% c("boff", "geck")))
 
-priming_data %>%
+revised_critical_data %>%
 pull(ID) %>% unique() %>% length
 
-priming_data %>%
+revised_critical_data %>%
   group_by(ID) %>% count()
 
-priming_data %>%
+revised_critical_data %>%
   group_by(valence) %>%
     summarize(mean_rt = mean(rt)) %>%
     ggplot() +
@@ -190,7 +190,7 @@ priming_data %>%
              position = "dodge")+
     theme_classic()
 
-rt_model = lmer(data = priming_data,
+rt_model = lmer(data = revised_critical_data,
                 rt ~ valence + (1|ID))
 emmeans::emmeans(rt_model,
                  pairwise ~ valence,
