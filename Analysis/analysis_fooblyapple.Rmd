@@ -9,12 +9,14 @@ ggeom_point(date: "2024-11-12"
 #install.packages("car")
 #install.packages("sentimentr")
 #install.packages("lmerTest")
+#install.packages("performance")
 
 library(tidyverse)
 library(emmeans)
 library(car)
 library(sentimentr)
 library(lmerTest)
+library(performance)
 ```
 #Import data
 ```{r}
@@ -26,7 +28,10 @@ prolific_data = read.csv("../data/savic-valence-prolific.csv")%>%
   select(-PROLIFIC_PID) %>% 
   mutate(data_source = "prolific")
 
-final_data = rbind(sona_data, prolific_data)
+final_data = rbind(sona_data, prolific_data) %>%
+  mutate(rt = as.numeric(rt)) %>%
+  mutate(valence = as.factor(valence)) %>%
+  mutate(typeoftrial = as.factor(typeoftrial))
 
 ```
 #Inspect data
@@ -43,12 +48,7 @@ final_data %>%
 final_data %>% 
   filter(typeoftrial == "target" & block_number == 1)%>%
   group_by(ID) %>%
-  mutate(rt = as.numeric(rt)) %>%
   count()
-
-final_data %>%
-  mutate(valence = as.factor(valence)) %>%
-  mutate(typeoftrial = as.factor(typeoftrial))
 
 
 final_data %>%
@@ -106,26 +106,16 @@ target_accuracy = final_data %>%
 mean_target_accuracy = target_accuracy %>%
   summarise(mean_accuracy = mean(accuracy),
             sd_accuracy = sd(accuracy))
-
-target_data = final_data %>%
-  filter(typeoftrial == "target") %>%
-  group_by(ID)%>%
-  mutate(rt = as.numeric(rt))
  
-response_times = target_data %>%
-  select(ID, rt) %>%
-  group_by(ID) %>%
-  summarise(mean_rt = mean(as.numeric(rt)), sd_rt = sd(rt))
-
-ggplot(data = response_times)+
-  geom_histogram(mapping = aes (x = mean_rt), binwidth = 30, na.rm = TRUE)+
+final_data %>%
+  filter(typeoftrial == "target") %>%
+  filter(rt < 1500) %>%
+ggplot()+
+  geom_histogram(mapping = aes (x = rt), binwidth = 30, na.rm = TRUE)+
  labs(title = "Histogram of Mean Response Time",
        x = "Mean Response Time",
        y = "Count") +
-   xlim(0, 1500) +
-  ylim(0, 20) +
   theme_classic()
-range(as.numeric(target_data$rt))
 
 attention = final_data %>%
   filter(typeoftrial == "attention") %>%
@@ -134,14 +124,9 @@ attention = final_data %>%
   mutate(response = ifelse(is.na(response), "blank", response)) %>%
 mutate(across(c(novel), ~ replace_na(., "NOT_FOUND"))) %>%
   mutate(edit_novel = adist(novel, response))%>%
-  mutate(revised_correct = ifelse (edit_novel < 3, 1, 0), #changed to three letters difference as criterion for correct
+  mutate(revised_correct = ifelse (edit_novel < 3, 1, 0),
          mismatch = ifelse (correct == revised_correct, 0, 1)) %>%
   ungroup()
-
-meaning_check = final_data %>%
-  filter(typeoftrial == "meaning_check") %>%
-  select(ID, condition, response, cue) %>% #encountered that we do not have the target stimulus word saved anywhere, so not sure how to determine what is correct.
-  filter(str_count(response, "\\S+") >= 3)
 
 subject_attention_accuracy = attention %>%
   group_by(ID) %>%
@@ -161,7 +146,7 @@ low_acc_IDs = subject_attention_accuracy %>%
   filter(mean_accuracy < 0.75) %>%
   pull(ID)
 
-revised_critical_data = target_data %>%
+revised_critical_data = final_data %>%
   filter(block_number == 1) %>%
   select(ID, rt, condition, prime, correct, target, correct_key, block_number, typeoftrial) %>%
   filter(!is.na(rt), rt > 200, rt < 1500, correct == TRUE) %>%
@@ -171,12 +156,9 @@ valence_codes = read_csv("../data/valence_codes.csv")
 
 revised_critical_data = revised_critical_data %>% 
   filter(typeoftrial == "target" & block_number == 1)%>%
-  select(condition, rt, prime, target, correct) %>%
+  select(ID, condition, rt, prime, target, correct) %>%
   left_join(valence_codes) %>% # for foobly, dodish, nuppical, mipp
   filter(!(prime %in% c("boff", "geck")))
-
-revised_critical_data %>%
-pull(ID) %>% unique() %>% length
 
 revised_critical_data %>%
   group_by(ID) %>% count()
@@ -192,9 +174,17 @@ revised_critical_data %>%
 
 rt_model = lmer(data = revised_critical_data,
                 rt ~ valence + (1|ID))
+car::Anova(rt_model)
+nobs(rt_model)
+check_model(rt_model)
 emmeans::emmeans(rt_model,
                  pairwise ~ valence,
                  adjust = "tukey")
+
+meaning_check = final_data %>%
+  filter(typeoftrial == "meaning_check") %>%
+  select(ID, condition, response, cue) %>%
+  filter(str_count(response, "\\S+") >= 3)
  
 meaning_check_correct = meaning_check %>%
   mutate(prime = str_extract(cue, "\\S+$"),
@@ -225,6 +215,9 @@ meaning_check_sentiment %>%
 
 meaning_check_model = lmer(data = meaning_check_sentiment,
                 sentiment ~ valence + (1|ID))
+car::Anova(meaning_check_model)
+nobs(meaning_check_model)
+check_model(meaning_check_model)
 emmeans::emmeans(meaning_check_model,
                  pairwise ~ valence,
                  adjust = "tukey")
