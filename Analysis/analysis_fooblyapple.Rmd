@@ -50,6 +50,12 @@ final_data %>%
   group_by(ID) %>%
   count()
 
+incomplete_participants = final_data %>%
+  filter(typeoftrial == "target") %>%
+  group_by(ID) %>%
+  summarize(total_trials = n()) %>%
+  filter(total_trials < 105) %>%
+  length()
 
 final_data %>%
   group_by(ID) %>% filter(typeoftrial == "target") %>% count()
@@ -144,13 +150,19 @@ Primary research question: To what extent does word valence impact word recognit
 ```{r}
 low_acc_IDs = subject_attention_accuracy %>%
   filter(mean_accuracy < 0.75) %>%
-  pull(ID)
+  pull(ID) %>%
+  length()
 
 revised_critical_data = final_data %>%
   filter(block_number == 1) %>%
   select(ID, rt, condition, prime, correct, target, correct_key, block_number, typeoftrial) %>%
   filter(!is.na(rt), rt > 200, rt < 1500, correct == TRUE) %>%
   filter(!ID %in% low_acc_IDs)
+
+included_in_priming = revised_critical_data %>%
+  pull(ID) %>%
+  unique() %>%
+  length()
 
 valence_codes = read_csv("../data/valence_codes.csv")
 
@@ -241,6 +253,8 @@ Based on the bar graph, the positive mean_rt is higher than all the other valenc
 Follow-up tests indicate that there is no significant difference between response times in any condition. There is no comparison where (p < 0.001). These findings suggest that valence does not have an impact on reaction time in this model.
 
 The positive valence is associated with the highest outcome, t(456) = 0.1330, followed by neutral, t(458) = 0.0326, and negative valence is associated with the lowest outcome, t(455) = -0.0542. All pairwise comparisons confirm that these differences are statistically significant (p < 0.001). We can conclude that people generally did accurately associate novel words with their conditional valence.
+
+Exclusions: We excluded 41 participants based on pre-registration criteria, and in our models, we analyzed 
 
 ##Sentence boxplot
 ```{r}
