@@ -248,11 +248,13 @@ nobs(meaning_check_model)
 check_model(meaning_check_model)
 emmeans::emmeans(meaning_check_model, pairwise ~ valence, adjust = "tukey")
 ```
-Based on the bar graph, the positive mean_rt is higher than all the other valence levels. The unrelated valence seems to be only slightly lower than the rest and mean_rt for negative and neutral conditions appear comparable.
+Based on the bar graph, the positive mean_rt appears higher than all the other valence levels. The unrelated valence seems to be only slightly lower than the rest and mean_rt for negative and neutral conditions appear comparable.
 
-Follow-up tests indicate that there is no significant difference between response times in any condition. There is no comparison where (p < 0.001). These findings suggest that valence does not have an impact on reaction time in this model.
+Our statistical tests indicate that there was no main effect of valence on reaction time, chi-square(3, N = 3512) = 1.542 p = .673.
 
-The positive valence is associated with the highest outcome, t(456) = 0.1330, followed by neutral, t(458) = 0.0326, and negative valence is associated with the lowest outcome, t(455) = -0.0542. All pairwise comparisons confirm that these differences are statistically significant (p < 0.001). We can conclude that people generally did accurately associate novel words with their conditional valence.
+Our testing did suggest there was a main effect of valence on sentiment score, chi-square(2, N = 592) = 83.543, p < .001.
+
+Follow-up Tukey p adjustment tests for pairwise comparison indicate that positive valence is associated with the highest outcome, t(456) = 0.1330, followed by neutral, t(458) = 0.0326, and negative valence is associated with the lowest outcome, t(455) = -0.0542. All pairwise comparisons confirm that these differences are statistically significant (p < 0.001). We can conclude that people generally did accurately associate novel words with their conditional valence.
 
 Exclusions: We excluded 41 participants based on pre-registration criteria, and in our models, we analyzed 
 
