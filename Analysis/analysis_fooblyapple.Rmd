@@ -163,13 +163,31 @@ revised_critical_data = revised_critical_data %>%
 revised_critical_data %>%
   group_by(ID) %>% count()
 
-revised_critical_data %>%
+counts = revised_critical_data %>%
   group_by(valence) %>%
-    summarize(mean_rt = mean(rt)) %>%
+  count()
+
+mean_scores = revised_critical_data %>%
+  group_by(valence) %>%
+  summarize(mean_rt = mean(rt),
+           sd_rt = sd(rt)) %>%
+  left_join(counts) %>%
+  mutate(SE = sd_rt/sqrt(n),
+         ymin = mean_rt - 1.96*SE,
+         ymax = mean_rt + 1.96*SE)
+  
+mean_scores %>%
+  group_by(valence) %>%
     ggplot() +
     geom_col(mapping = aes(x = valence, y = mean_rt,
                            group = valence, fill = valence),
              position = "dodge")+
+  geom_errorbar(aes(x = valence, ymin = ymin, ymax = ymax),
+                width = .25,
+                position = position_dodge(width=0.9)) + 
+  geom_point(data = mean_scores, aes(x = valence, y=mean_rt, colour = valence),
+             position = position_jitterdodge(),
+             alpha = 0.3)+
     theme_classic()
 
 rt_model = lmer(data = revised_critical_data,
