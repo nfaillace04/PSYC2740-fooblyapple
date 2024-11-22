@@ -139,7 +139,7 @@ The mean age of our sample is 35.38, and the standard deviation is 13.18. The ge
 The average accuracy in the target trials was 0.88, with a standard deviation of 0.13. 
 
 
-#Inferential Statistics
+#Inferential statistics
 Primary research question: To what extent does word valence impact word recognition? Operationalized by response times.
 ```{r}
 low_acc_IDs = subject_attention_accuracy %>%
@@ -195,9 +195,7 @@ rt_model = lmer(data = revised_critical_data,
 car::Anova(rt_model)
 nobs(rt_model)
 check_model(rt_model)
-emmeans::emmeans(rt_model,
-                 pairwise ~ valence,
-                 adjust = "tukey")
+emmeans::emmeans(rt_model, pairwise ~ valence, adjust = "tukey")
 
 meaning_check = final_data %>%
   filter(typeoftrial == "meaning_check") %>%
@@ -236,9 +234,7 @@ meaning_check_model = lmer(data = meaning_check_sentiment,
 car::Anova(meaning_check_model)
 nobs(meaning_check_model)
 check_model(meaning_check_model)
-emmeans::emmeans(meaning_check_model,
-                 pairwise ~ valence,
-                 adjust = "tukey")
+emmeans::emmeans(meaning_check_model, pairwise ~ valence, adjust = "tukey")
 ```
 Based on the bar graph, the positive mean_rt is higher than all the other valence levels. The unrelated valence seems to be only slightly lower than the rest and mean_rt for negative and neutral conditions appear comparable.
 
@@ -246,7 +242,7 @@ Follow-up tests indicate that there is no significant difference between respons
 
 The positive valence is associated with the highest outcome, t(456) = 0.1330, followed by neutral, t(458) = 0.0326, and negative valence is associated with the lowest outcome, t(455) = -0.0542. All pairwise comparisons confirm that these differences are statistically significant (p < 0.001). We can conclude that people generally did accurately associate novel words with their conditional valence.
 
-#Sentence boxplot
+##Sentence boxplot
 ```{r}
 directory = "../Experiment"
 
