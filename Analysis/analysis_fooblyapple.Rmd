@@ -150,14 +150,16 @@ Primary research question: To what extent does word valence impact word recognit
 ```{r}
 low_acc_IDs = subject_attention_accuracy %>%
   filter(mean_accuracy < 0.75) %>%
-  pull(ID) %>%
+  select(ID, mean_accuracy)
+
+low_acc_IDs_vector = low_acc_IDs$ID %>%
   length()
 
 revised_critical_data = final_data %>%
   filter(block_number == 1) %>%
   select(ID, rt, condition, prime, correct, target, correct_key, block_number, typeoftrial) %>%
   filter(!is.na(rt), rt > 200, rt < 1500, correct == TRUE) %>%
-  filter(!ID %in% low_acc_IDs)
+  anti_join(low_acc_IDs, by = "ID") 
 
 included_in_priming = revised_critical_data %>%
   pull(ID) %>%
