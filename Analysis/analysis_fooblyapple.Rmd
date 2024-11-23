@@ -45,13 +45,11 @@ pull(ID) %>% unique() %>% length
 final_data %>%
   group_by(ID) %>% count()
 
-final_data %>% 
-  filter(typeoftrial == "target" & block_number == 1)%>%
-  group_by(ID) %>%
-  count()
-
 final_data %>%
   group_by(ID) %>% filter(typeoftrial == "target") %>% count()
+
+final_data %>% 
+  group_by(ID) %>% filter(typeoftrial == "target" & block_number == 1)%>% count()
 
 final_data %>%
   group_by(ID) %>% filter(typeoftrial == "sentence") %>% count() 
@@ -248,16 +246,13 @@ Our testing suggested there was a main effect of valence on sentiment score, chi
 
 Follow-up Tukey p adjustment tests for pairwise comparison indicate that sentence responses in the positive valence condition had the strongest association with the novel word, (t(575) = 0.1375, followed by neutral, t(579) = 0.0329, and negative valence is associated with the weakest association, t(578) = -0.0387. All pairwise comparisons confirm that these differences are statistically significant (p < 0.001). We can conclude that our subjects were largely able to accurately associate novel words with their conditional valence.
 
-Exclusions: The number of participants initially recruited was 147. We excluded 57 participants based on pre-registration criteria, and another 10 for not completing all parts of the experiment. In our models, we analyzed the data from 80 participants total. 
-
+Exclusions: The number of participants initially recruited was 147. We excluded 57 participants based on pre-registration criteria, and another 10 for not completing all parts of the experiment. In our models, we analyzed the data from 80 total participants. 
 ##Sentence boxplot
 ```{r}
 directory = "../Experiment"
 
-# Get a list of CSV files that match the pattern
 all_csv_files = list.files(directory, pattern = "^valence_sentences.*-updated\\.csv$", full.names = TRUE)
 
-# Read and combine all CSV files into one data frame called 'sentences'
 sentences = all_csv_files %>%
   purrr::map_dfr(read_csv) %>%
   mutate(element_id = row_number()) %>%
