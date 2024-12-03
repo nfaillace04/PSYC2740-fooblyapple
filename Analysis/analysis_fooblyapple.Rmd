@@ -136,6 +136,7 @@ The average accuracy in the target trials was 0.87, with a standard deviation of
 
 
 # Inferential statistics
+Primary research question: To what extent does word valence impact word recognition? Operationalized by response times.
 ```{r}
 low_acc_IDs = subject_attention_accuracy %>%
   filter(mean_accuracy < 0.75) %>%
@@ -169,7 +170,9 @@ revised_critical_data %>%
 counts = revised_critical_data %>%
   group_by(valence) %>%
   count()
-
+```
+Exclusions: The number of participants initially recruited was 147. We excluded 57 participants based on pre-registration criteria, and another 10 for not completing all parts of the experiment. In our models, we analyzed the data from 80 total participants. 
+```{r}
 mean_scores = revised_critical_data %>%
   group_by(valence) %>%
   summarize(mean_rt = mean(rt),
@@ -192,12 +195,16 @@ mean_scores %>%
              position = position_jitterdodge(),
              alpha = 0.3)+
     theme_classic()
-
+```
+Based on the bar graph, the mean_rt for all valences appear to be equal.
+```{r}
 rt_model = lmer(data = revised_critical_data,
                 rt ~ valence + (1|ID))
 car::Anova(rt_model)
 nobs(rt_model)
-
+```
+Our statistical tests indicated that there was no main effect of valence on reaction time, chi-square(3, N = 4396) = 2.181 *p* = .536.
+```{r}
 meaning_check = final_data %>%
   filter(typeoftrial == "meaning_check") %>%
   select(ID, condition, response, cue) %>%
@@ -236,17 +243,9 @@ car::Anova(meaning_check_model)
 nobs(meaning_check_model)
 emmeans::emmeans(meaning_check_model, pairwise ~ valence, adjust = "tukey")
 ```
-Primary research question: To what extent does word valence impact word recognition? Operationalized by response times.
+Our testing suggested there was a main effect of valence on sentiment score, chi-square(2, N = 749) = 99.908, *p* < .001.
 
-Based on the bar graph, the positive mean_rt appears higher than all the other valence levels. The unrelated valence seems to be only slightly lower than the rest and mean_rt for negative and neutral conditions appear comparable.
-
-Our statistical tests indicated that there was no main effect of valence on reaction time, chi-square(3, N = 4396) = 2.181 p = .536.
-
-Our testing suggested there was a main effect of valence on sentiment score, chi-square(2, N = 749) = 99.908, p < .001.
-
-Follow-up Tukey p adjustment tests for pairwise comparison indicate that sentence responses in the positive valence condition had the strongest association with the novel word, (t(575) = 0.1375, followed by neutral, t(579) = 0.0329, and negative valence is associated with the weakest association, t(578) = -0.0387. All pairwise comparisons confirm that these differences are statistically significant (p < 0.001). We can conclude that our subjects were largely able to accurately associate novel words with their conditional valence.
-
-Exclusions: The number of participants initially recruited was 147. We excluded 57 participants based on pre-registration criteria, and another 10 for not completing all parts of the experiment. In our models, we analyzed the data from 80 total participants. 
+Follow-up Tukey p adjustment tests for pairwise comparison indicate that valence of the priming sentences was significantly predictive of sentiment score for sentences created during meaning check. All pairwise comparisons confirm that these differences are statistically significant (*p*'s < .001). We can conclude that our subjects were largely able to accurately associate novel words with their conditional valence.
 # Sentence boxplot
 ```{r}
 directory = "../Experiment"
@@ -275,5 +274,5 @@ sentences %>%
   theme_linedraw() +
   labs(title = "Boxplot of Sentence Sentiment", x = "Valence", y = "Sentiment")
 ```
-
+This boxplot represents the sentiment scores of the sentences used in training and a visual reflection of how our valence groups correlated with sentiment scores. Notably, there is an outlier in the negative valence. This sentence is "I hope they do not have a nuppical apple" which received a sentiment score of 0.16667. This outlier reflects a limitation of sentimentr: a sentence that would be interpreted as negative by a human subject is recorded as positive.
 
