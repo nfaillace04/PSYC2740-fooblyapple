@@ -109,10 +109,12 @@ final_data %>%
 ggplot()+
   geom_histogram(mapping = aes (x = rt), binwidth = 30, na.rm = TRUE)+
  labs(title = "Histogram of Mean Response Time",
-       x = "Mean Response Time",
+       x = "Response Time",
        y = "Count") +
   theme_classic()
-
+```
+Based on the histogram, response times can be represented by a positively-skewed distribution with a peak around 500ms. The tail seems to taper around 1500ms, which we established as a cut-off.
+```{r}
 attention = final_data %>%
   filter(typeoftrial == "attention") %>%
   select(ID, response, novel, correct) %>%
