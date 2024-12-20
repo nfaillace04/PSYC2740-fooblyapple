@@ -141,17 +141,17 @@ The average accuracy in the target trials was 0.87, with a standard deviation of
 Primary research question: To what extent does word valence impact word recognition? Operationalized by response times.
 ```{r}
 low_acc_IDs = subject_attention_accuracy %>%
-  filter(mean_accuracy < 0.75) %>%
-  select(ID, mean_accuracy)
+   filter(mean_accuracy < 0.75) %>%
+   select(ID, mean_accuracy)
 
 low_acc_IDs_vector = low_acc_IDs$ID %>%
   length()
 
 revised_critical_data = final_data %>%
-  filter(block_number == 1) %>%
   select(ID, rt, condition, prime, correct, target, correct_key, block_number, typeoftrial) %>%
+  filter(block_number == 1) %>%
   filter(!is.na(rt), rt > 200, rt < 1500, correct == TRUE) %>%
-  anti_join(low_acc_IDs, by = "ID") 
+  anti_join(low_acc_IDs, by = "ID")
 
 included_in_priming = revised_critical_data %>%
   pull(ID) %>%
