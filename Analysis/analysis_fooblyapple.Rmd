@@ -20,7 +20,7 @@ library(performance)
 ```
 # Import data
 ```{r}
-sona_data = read.csv("../data/recentsonadata.csv") %>%
+sona_data = read.csv("../data/savic-valence.csv") %>%
   select(-sona_id) %>% 
   mutate(data_source = "sona")
 
@@ -108,7 +108,7 @@ final_data %>%
   filter(rt < 1500) %>%
 ggplot()+
   geom_histogram(mapping = aes (x = rt), binwidth = 30, na.rm = TRUE)+
- labs(title = "Histogram of Mean Response Time",
+ labs(title = "Histogram of Response Time",
        x = "Response Time",
        y = "Count") +
   theme_classic()
@@ -196,6 +196,9 @@ mean_scores %>%
   geom_point(data = mean_scores, aes(x = valence, y=mean_rt, colour = valence),
              position = position_jitterdodge(),
              alpha = 0.3)+
+  labs(title = "Mean Response Time Based on Prime Valence",
+       x = "Prime Valence",
+       y = "Mean RT") +
     theme_classic()
 ```
 Based on the bar graph, the mean_rt for all valences appear to be equal.
@@ -237,7 +240,7 @@ meaning_check_sentiment %>%
   ggplot(aes(x = valence, y = sentiment)) +
   geom_boxplot() +
   theme_linedraw() +
-  labs(title = "Boxplot of Meaning Check Sentiment Compared to Intended Valence", x = "Valence", y = "Sentiment")
+  labs(title = "Meaning Check Sentiment Compared to Intended Valence", x = "Valence", y = "Sentiment")
 
 meaning_check_model = lmer(data = meaning_check_sentiment,
                 sentiment ~ valence + (1|ID))
@@ -274,7 +277,7 @@ sentences %>%
   ggplot(aes(x = valence, y = sentiment)) +
   geom_boxplot() +
   theme_linedraw() +
-  labs(title = "Boxplot of Sentence Sentiment", x = "Valence", y = "Sentiment")
+  labs(title = "Sentence Sentiment Compared to Intended Valence", x = "Valence", y = "Sentiment")
 ```
 This boxplot represents the sentiment scores of the sentences used in training and a visual reflection of how our valence groups correlated with sentiment scores. Notably, there is an outlier in the negative valence. This sentence is "I hope they do not have a nuppical apple" which received a sentiment score of 0.16667. This outlier reflects a limitation of sentimentr: a sentence that would be interpreted as negative by a human subject is recorded as positive.
 
