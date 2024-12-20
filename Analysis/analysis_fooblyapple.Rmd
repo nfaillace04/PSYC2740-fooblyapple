@@ -149,8 +149,8 @@ low_acc_IDs_vector = low_acc_IDs$ID %>%
 
 revised_critical_data = final_data %>%
   select(ID, rt, condition, prime, correct, target, correct_key, block_number, typeoftrial) %>%
-  filter(block_number == 1) %>%
-  filter(!is.na(rt), rt > 200, rt < 1500, correct == TRUE) %>%
+  filter(typeoftrial == "target", block_number == 1) %>%
+  filter(!is.na(rt), rt > 200, rt < 1500, correct %in% c("true", "TRUE")) %>%
   anti_join(low_acc_IDs, by = "ID")
 
 included_in_priming = revised_critical_data %>%
