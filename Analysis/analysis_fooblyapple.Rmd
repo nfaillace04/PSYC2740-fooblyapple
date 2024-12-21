@@ -58,7 +58,7 @@ final_data %>%
   group_by(ID) %>% filter(typeoftrial == "attention") %>% count() 
 
 ```
-There are 76215 rows and 43 columns in our data, and 147 unique subjects. All subjects that completed the experiment completed 105 target trials (9 practice and 96 experimental), 126 sentence trials, and 9 attention trials. All subjects did the same number of trials because unlike in the demographics survey, the number of trials should not change based on the responses of the subject.
+There are 86680 rows and 43 columns in our data, and 166 unique subjects. All subjects that completed the experiment completed 105 target trials (9 practice and 96 experimental), 126 sentence trials, and 9 attention trials. All subjects did the same number of trials because unlike in the demographics survey, the number of trials should not change based on the responses of the subject.
 
 Our independent variables are "valence" (positive, negative, neutral) and "type" (novel or familiar). Our dependent variables are "rt" for priming trials.
 
@@ -132,9 +132,9 @@ subject_attention_accuracy = attention %>%
             sd_accuracy = sd(revised_correct, na.rm = TRUE))
 
 ```
-The mean age of our sample is 36.01, and the standard deviation is 12.88. The gender distribution is currently 77 females and 52 males. In terms of the racial distribution, there is 1 subject who identified as American Indian/Alaskan Native, 9 as Asian, 23 as Black/African American, 84 as White/Caucasian, 6 as multiracial, and 6 as other. The mean number of years of education in our sample was 15.51, with a standard deviation of 3.16.
+The mean age of our sample is 33.91, and the standard deviation is 13.32. The gender distribution is currently 84 females, 60 males, and 3 participants who identified as nonbinary. In terms of the racial distribution, there is 1 subject who identified as American Indian/Alaskan Native, 12 as Asian, 24 as Black/African American, 92 as White/Caucasian, 9 as multiracial, and 9 as other. The mean number of years of education in our sample was 15.07, with a standard deviation of 3.28.
 
-The average accuracy in the target trials was 0.87, with a standard deviation of 0.13. 
+The average accuracy in the target trials was 0.71, with a standard deviation of 0.45. 
 
 
 # Inferential statistics
@@ -173,7 +173,7 @@ counts = revised_critical_data %>%
   group_by(valence) %>%
   count()
 ```
-Exclusions: The number of participants initially recruited was 147. We excluded 57 participants based on pre-registration criteria, and another 10 for not completing all parts of the experiment. In our models, we analyzed the data from 80 total participants. 
+Exclusions: The number of participants initially recruited was 166. We excluded 57 participants based on pre-registration criteria, and another 19 for not completing all parts of the experiment. In our models, we analyzed the data from 90 total participants. 
 ```{r}
 mean_scores = revised_critical_data %>%
   group_by(valence) %>%
@@ -208,7 +208,7 @@ rt_model = lmer(data = revised_critical_data,
 car::Anova(rt_model)
 nobs(rt_model)
 ```
-Our statistical tests indicated that there was no main effect of valence on reaction time, chi-square(3, N = 4396) = 2.181 *p* = .536.
+Our statistical tests indicated that there was no main effect of valence on reaction time, χ2(3, N = 4942) = 1.884, *p* = .597.
 ```{r}
 meaning_check = final_data %>%
   filter(typeoftrial == "meaning_check") %>%
@@ -248,7 +248,7 @@ car::Anova(meaning_check_model)
 nobs(meaning_check_model)
 emmeans::emmeans(meaning_check_model, pairwise ~ valence, adjust = "tukey")
 ```
-Our testing suggested there was a main effect of valence on sentiment score, chi-square(2, N = 749) = 99.908, *p* < .001.
+Our testing suggested there was a main effect of valence on sentiment score, (χ2(2, N = 856) = 122.56, *p* < .001).
 
 Follow-up Tukey p adjustment tests for pairwise comparison indicate that valence of the priming sentences was significantly predictive of sentiment score for sentences created during meaning check. All pairwise comparisons confirm that these differences are statistically significant (*p*'s < .001). We can conclude that our subjects were largely able to accurately associate novel words with their conditional valence.
 # Sentence boxplot
